@@ -1,0 +1,121 @@
+{
+	"POD1": {
+		"TKY01": {
+			"VB01": {
+				"Mgmt Vblock 1 AMP": {
+					"GCF-SRM-TKY": {
+						"VM": "VBCdhv-037"
+					},
+					"GCF-SRM_VRS-TKY": {
+						"VM": "VBCdhv-038"
+					},
+					"GCF-SSO-TKY01_A": {
+						"VM": "VBCdhv-006-P"
+					}
+				},
+				"IaaS Mgmt Vblock": {
+					"GCF-AD-TKY01_A": {
+						"VM": "VBCdhv-001"
+					},
+					"GCF-AD-TKY01_B": {
+						"VM": "VBCdhv-002"
+					},
+					"GCF-DS-A": {
+						"VM": "VBCdhv-067"
+					},
+					"GCF-DSDB-A": {
+						"VM": "VBCdhv-068"
+					},
+					"GCF-SRM_RT_EDGE-TKY": {
+						"VM": "VBCdhv-100-0"
+					},
+					"GCF-SSO-TKY01_B": {
+						"VM": "VBCdhv-006-HB"
+					}
+				}
+			},
+			"VB02": {},
+			"VB03": {},
+			"VB04": {},
+			"VB05": {},
+			"VB06": {}
+		},
+
+		"TKY02": {
+			"VB07": {
+				"DaaS Vblock 7 AMP": {
+					"GCF-AD-TKY02_A": {
+						"VM": "VBGdhv-001"
+					},
+					"GCF-AD-TKY02_B": {
+						"VM": "VBGdhv-002"
+					},
+					"GCF-SSO-TKY02_A": {
+						"VM": "VBGdhv-006a"
+					},
+					"GCF-SSO-TKY02_B": {
+						"VM": "VBGdhv-006b"
+					}
+				}
+			}
+		},
+
+		"OSK03": {
+			"VB08": {
+				"IaaS Mgmt Vblock": {
+					"GCF-AD-OSK01_A": {
+						"VM": "VBOdhv-001"
+					},
+					"GCF-AD-OSK01_B": {
+						"VM": "VBOdhv-002"
+					},
+					"GCF-DS-B": {
+						"VM": "VBOdhv-067"
+					},
+					"GCF-DSDB-B": {
+						"VM": "VBOdhv-068"
+					},
+					"GCF-SRM_RT_EDGE-OSK": {
+						"VM": "VBOdhv-100-0"
+					},
+					"GCF-VCO": {
+						"VM": "VBCdhv-vco01"
+					},
+					"GCF-VCOPS-01": {
+						"VM": "Analytics VM",
+						"IP": ["10.0.1.76"]
+					},
+					"GCF-VCOPS-02": {
+						"VM": "UI VM",
+						"IP": ["10.0.1.75"]
+					},
+					"GCF-UM": {
+						"VM": "vCloud Usage Meter",
+						"IP": ["10.0.1.90"]
+					},
+					"GCF-HYPRC": {
+						"VM": "VBCdhv-hyp01"
+					},
+					"GCF-SPLI": {
+						"VM": "VBCdhv-splidx01"
+					}
+				},
+				"Mgmt Vblock 8 AMP": {
+					"GCF-SRM-OSK": {
+						"VM": "VBOdhv-037"
+					},
+					"GCF-SRM_VRS-OSK": {
+						"VM": "VBOdhv-038"
+					},
+					"GCF-SSO-OSK01_A": {
+						"VM": "VBOdhv-026a"
+					},
+					"GCF-SSO-OSK01_B": {
+						"VM": "VBOdhv-026b"
+					}
+				}
+			},
+			"VB09": {}
+		}
+	}
+}
