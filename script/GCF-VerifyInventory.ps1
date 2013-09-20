@@ -11,3 +11,29 @@
 # QUALITY, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. 
 #
 #######################################################################################
+. .\config\environment.ps1
+
+[xml]$cfg = Get-Content $CFG
+$acct = $cfg.config.account
+$cred = New-Object System.Management.Automation.PSCredential($acct.vcenter.user, (Get-Content $VC_PASS | ConvertTo-SecureString))
+$vc = Connect-VIServer -Server $acct.vcenter.hostname -Credential $cred
+
+$jso = Get-Content $GCF_MANIFEST | Out-String | ConvertFrom-Json
+$jso.psobject.properties | % {
+	$pod = $_.Name
+	$_.Value.psobject.properties | % {
+		$dc = $_.Name
+		$_.Value.psobject.properties | % {
+			$vb = $_.Name
+			$_.Value.psobject.properties | % {
+				$cluster = $_.Name
+				$_.Value.psobject.properties | % {
+					$appid = $_.Name
+					"/$pod/$dc/$vb/$cluster/$appid"
+					$_.Value.VM
+					
+				}
+			}
+		}
+	}	
+}
