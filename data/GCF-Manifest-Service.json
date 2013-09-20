@@ -1,0 +1,76 @@
+{
+	"POD_MGMT": {
+		"Description": "Pod Management",
+		"Applications": {
+			"HYPRC": [""],
+			"SPRI": [""],
+			"UM": [""],
+			"VCO": [""],
+			"VCOPS": ["01","02"]
+		}
+	},
+	"GEO_MGMT": {
+		"Description": "Geographical Area Management",
+		"Applications": {
+			"VC": ["A","B"],
+			"VCDB": ["A","B"],
+			"SRM": [""],
+			"SRM_VRS": [""],
+			"SRM_RTEDGE": [""],
+			"DS": [""],
+			"DSDB": [""]
+		}
+	},
+	"DC_MGMT": {
+		"Description": "Datacenter Management",
+		"Applications": {
+			"AD": ["A", "B"],
+			"SSO": ["A", "B"],
+			"ESRS": ["01", "02", "03"]
+		}
+	},
+	"VB_MGMT": {
+		"Description": "Vblock Management",
+		"Applications": {
+			"VC": ["A", "B"],
+			"VCDB": ["A", "B", "M", "LS"],
+			"VUM": ["A", "B"],
+			"VSM": [""],
+			"SPLF": [""],
+			"AM": [""],
+			"JS": [""]
+		}
+	},
+	"ESX_AGENT2": {
+		"Description": "AMP cluster ESXi hosts agent",
+		"Applications": {
+			"VADP": ["01", "02"],
+			"DSVA": ["01", "02"]
+		}
+	},
+	"ESX_AGENT6": {
+		"Description": "Management cluster ESXi hosts agent",
+		"Applications": {
+			"VADP": ["01", "02", "03", "04", "05", "06"],
+			"DSVA": ["01", "02", "03", "04", "05", "06"]
+		}
+	},
+	"IAAS_MGMT": {
+		"Description": "IaaS Management",
+		"Applications": {
+			"AD": ["01A", "01B", "02A", "02B"],
+			"CB": ["01", "02", "03"],
+			"LB": ["A", "B"],
+			"VCD": ["A", "B"],
+			"VCDDB": ["A", "B", "M", "LS"]
+		}
+	},
+	"DAAS_MGMT": {
+		"Description": "DaaS Resource Management",
+		"Applications": {
+			"LB": ["A", "B"],
+			"VCD": ["A", "B"],
+			"VCDDB": ["A", "B", "M", "LS"]
+		}
+	}
+}
