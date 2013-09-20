@@ -3,7 +3,7 @@
 		"TOKYO": {
 			"TKY01": {
 				"VB01": {
-					"Services": ["VB_MGMT","ESX_AGENT6","POD_MGMT","GEO_MGMT", "DC_MGMT", "IAAS_MGMT", "DAAS_MGMT"]
+					"Services": ["REGION_MGMT","ESX_AGENT6","POD_MGMT","DC_MGMT", "IAAS_MGMT", "DAAS_MGMT"]
 				},
 				"VB02": {
 					"Services": ["VB_MGMT","ESX_AGENT2"]
@@ -18,7 +18,7 @@
 		"OSAKA": {
 			"OSK01": {
 				"VB08": {
-					"Services": ["VB_MGMT","ESX_AGENT6","GEO_MGMT", "DC_MGMT"]
+					"Services": ["REGION_MGMT","ESX_AGENT6", "DC_MGMT"]
 				},
 				"VB09": {
 					"Services": ["VB_MGMT","ESX_AGENT2"]

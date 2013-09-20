@@ -9,11 +9,14 @@
 			"VCOPS": ["01","02"]
 		}
 	},
-	"GEO_MGMT": {
-		"Description": "Geographical Area Management",
+	"REGION_MGMT": {
+		"Description": "Region Management",
 		"Applications": {
 			"VC": ["A","B"],
 			"VCDB": ["A","B"],
+			"VUM": ["A", "B"],
+			"VSM": [""],
+			"AM": [""],
 			"SRM": [""],
 			"SRM_VRS": [""],
 			"SRM_RTEDGE": [""],
@@ -37,8 +40,7 @@
 			"VUM": ["A", "B"],
 			"VSM": [""],
 			"SPLF": [""],
-			"AM": [""],
-			"JS": [""]
+			"AM": [""]
 		}
 	},
 	"ESX_AGENT2": {

@@ -2,7 +2,7 @@
 
 	<account>
 		<!-- vBlock1 vCenter -->
-		<vcenter user="sbgcf\svc_report" hostname="VBCdhv-003"/>
+		<vcenter user="sbgcf\svc_report" hostname="10.1.1.50"/>
 	</account>
 
     <!-- Organization vDC name to backup start time mapping -->

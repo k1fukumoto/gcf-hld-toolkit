@@ -20,8 +20,7 @@ $LOG = "$INSTALL_DIR\log\$SCRIPT_BASENAME.log"
 # Log size limit in KB. Log will be renamed once size reaches this number
 $LOGMAX = 1024 # KB
 
-# $GCF_MANIFEST = "$INSTALL_DIR\config\GCF-Manifest.json"
-$GCF_MANIFEST = "z:\fukumk\Desktop\Hawks\3.2\GCF-Manifest.json"
+$GCF_VMS = "$INSTALL_DIR\data\GCF-VM.json"
 
 # Tool configuration
 $CFG = "$INSTALL_DIR\config\config.xml"

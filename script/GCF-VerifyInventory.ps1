@@ -15,25 +15,18 @@
 
 [xml]$cfg = Get-Content $CFG
 $acct = $cfg.config.account
-$cred = New-Object System.Management.Automation.PSCredential($acct.vcenter.user, (Get-Content $VC_PASS | ConvertTo-SecureString))
-$vc = Connect-VIServer -Server $acct.vcenter.hostname -Credential $cred
+#$cred = New-Object System.Management.Automation.PSCredential($acct.vcenter.user, (Get-Content $VC_PASS | ConvertTo-SecureString))
+#$vc = Connect-VIServer -Server '10.1.1.50','10.1.8.50' -Credential $cred
 
-$jso = Get-Content $GCF_MANIFEST | Out-String | ConvertFrom-Json
+$jso = Get-Content $GCF_VMS | Out-String | ConvertFrom-Json
 $jso.psobject.properties | % {
-	$pod = $_.Name
-	$_.Value.psobject.properties | % {
-		$dc = $_.Name
-		$_.Value.psobject.properties | % {
-			$vb = $_.Name
-			$_.Value.psobject.properties | % {
-				$cluster = $_.Name
-				$_.Value.psobject.properties | % {
-					$appid = $_.Name
-					"/$pod/$dc/$vb/$cluster/$appid"
-					$_.Value.VM
-					
-				}
-			}
-		}
-	}	
+	$appid = $_.Name
+	$vmname = $_.Value.VM
+
+	$vm = Get-VM $vmname
+	if($vm) {
+		INFO("{0}: '{1}'" -f $appid, $vmname)
+	} else {
+		ERROR("VM {0} not found" -f $vmname)
+	}
 }

@@ -3,30 +3,47 @@
 import json
 import re
 
-services = json.load(open('./data/GCF-Manifest-Service.json'))
+services = json.load(open('./data/GCF-Service.json'))
+vms = json.load(open('./data/GCF-VM.json'))
+pods = json.load(open('./data/GCF-VB.json'))
 
-pods = json.load(open('./data/GCF-Manifest-VB.json'))
-
+appids = {}
 for pod, v in pods.items():
-    for geo, v in v.items():
+    for reg, v in v.items():
         for dc, v in v.items():
             for vb, v in v.items():
                 for s in v["Services"]:
                     for app, nodes in services[s]['Applications'].items():
-                        for node in nodes:
-                            if(node != ''): 
-                                node = "-%s" % node
+                        for node in nodes: 
+                            if(node != ''): node = "-%s" % node 
+                            appid = ''
                             if(re.match('^POD', s)):
-                                print("%s-%s-%s%s" % (s, pod, app,node))
-                            elif(re.match('^GEO', s)):
-                                print("%s-%s-%s%s" % (s, geo, app,node))
+                                appid = ("%s-%s-%s%s" % (s, pod, app,node))
+                            elif(re.match('^REGION', s)):
+                                appid = ("%s-%s-%s%s" % (s, reg, app,node))
                             elif(re.match('^DC', s)):
-                                print("%s-%s-%s%s" % (s, dc, app,node))
+                                appid = ("%s-%s-%s%s" % (s, dc, app,node))
                             elif(re.match('^VB', s) or re.match('^ESX', s)):
-                                print("%s-%s-%s%s" % (s, vb, app,node))
+                                appid = ("%s-%s-%s%s" % (s, vb, app,node))
                             else:
-                                print("%s-%s%s" % (s, app,node))
+                                appid = ("%s-%s%s" % (s, app,node))
+                            appids[appid] = 1
 
-
-    
-
+for appid, v in appids.items():
+    if appid in vms:
+        print "%s => %s" % (appid,vms[appid])
+        del vms[appid]
+    else:
+        if(re.match('.+VB10',appid) or 
+           re.match('.+VB11',appid) or
+           'REGION_MGMT-OSAKA-VCDB-B' == appid):
+            # Ignore for now 
+            appid
+        else:
+            raise Exception("invalid appid '%s'" % appid)
+        
+for appid, v in vms.items():
+    if('REGION_MGMT-OSAKA-SPLF' == appid):
+        appid # ignore for now
+    else:
+        raise Exception("unknown appid '%s'" % appid)

@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
-from pprint import pprint
 import json
+import re
 
-appid = {}
+appids = {}
 with open('./data/vm.txt') as f:
     for line in f.readlines():
-        appid_vm = line.split()
-        appid[ appid_vm[0] ] = {'VM':appid_vm[1]}
+        m = re.match('(\S+)\s+(.*)$',line)
+        appids[ m.group(1) ] = {'VM':m.group(2)}
         
-print json.dumps(appid,indent=4)
+print json.dumps(appids,indent=4)
