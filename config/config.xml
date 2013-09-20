@@ -1,0 +1,9 @@
+<config>
+
+	<account>
+		<!-- vBlock1 vCenter -->
+		<vcenter user="sbgcf\svc_report" hostname="VBCdhv-003"/>
+	</account>
+
+    <!-- Organization vDC name to backup start time mapping -->
+</config>
