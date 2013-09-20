@@ -1,9 +1,11 @@
+#!/usr/bin/python
+
 import json
 import re
 
-services = json.load(open('./GCF-Manifest-Service.json'))
+services = json.load(open('./data/GCF-Manifest-Service.json'))
 
-pods = json.load(open('./GCF-Manifest-POD.json'))
+pods = json.load(open('./data/GCF-Manifest-VB.json'))
 
 for pod, v in pods.items():
     for geo, v in v.items():
