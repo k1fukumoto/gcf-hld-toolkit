@@ -15,18 +15,30 @@
 
 [xml]$cfg = Get-Content $CFG
 $acct = $cfg.config.account
-#$cred = New-Object System.Management.Automation.PSCredential($acct.vcenter.user, (Get-Content $VC_PASS | ConvertTo-SecureString))
-#$vc = Connect-VIServer -Server '10.1.1.50','10.1.8.50' -Credential $cred
+$cred = New-Object System.Management.Automation.PSCredential($acct.vcenter.user, (Get-Content $VC_PASS | ConvertTo-SecureString))
 
 $jso = Get-Content $GCF_VMS | Out-String | ConvertFrom-Json
 $jso.psobject.properties | % {
-	$appid = $_.Name
-	$vmname = $_.Value.VM
-
-	$vm = Get-VM $vmname
-	if($vm) {
-		INFO("{0}: '{1}'" -f $appid, $vmname)
+	$region = $_.Name
+	
+	$vcener = ''
+	if($region -eq "TOKYO") {
+		$vcenter = '10.1.1.50'
+	} elseif($region -eq "OSAKA") {
+		$vcenter = '10.1.8.50'
 	} else {
-		ERROR("VM {0} not found" -f $vmname)
+		ERROR("Unknown region {0}" -f $region)
+	}
+	$vc = Connect-VIServer -Server $vcenter -Credential $cred
+	$_.Value.psobject.properties | % {
+		$appid = $_.Name
+		$vmname = $_.Value.VM
+
+		$vm = Get-VM $vmname
+		if($vm) {
+			INFO("{0}: '{1}'" -f $appid, $vmname)
+		} else {
+			ERROR("{0}: VM '{1}' not found" -f $appid,$vmname)
+		}
 	}
 }

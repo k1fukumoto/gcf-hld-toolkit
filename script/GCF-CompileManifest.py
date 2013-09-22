@@ -30,20 +30,24 @@ for pod, v in pods.items():
                             appids[appid] = 1
 
 for appid, v in appids.items():
-    if appid in vms:
-        print "%s => %s" % (appid,vms[appid])
-        del vms[appid]
-    else:
-        if(re.match('.+VB10',appid) or 
-           re.match('.+VB11',appid) or
+    found = False
+    for region, v in vms.items():
+        if appid in vms[region]:
+            print "%s => %s" % (appid,vms[region][appid])
+            del vms[region][appid]
+            found = True
+    if(not found):
+        if(re.match('.+VB10', appid) or 
+           re.match('.+VB11', appid) or
            'REGION_MGMT-OSAKA-VCDB-B' == appid):
             # Ignore for now 
             appid
         else:
             raise Exception("invalid appid '%s'" % appid)
-        
-for appid, v in vms.items():
-    if('REGION_MGMT-OSAKA-SPLF' == appid):
-        appid # ignore for now
-    else:
-        raise Exception("unknown appid '%s'" % appid)
+
+for region, v in vms.items():        
+    for appid, v in vms[region].items():
+        if('REGION_MGMT-OSAKA-SPLF' == appid):
+            appid # ignore for now
+        else:
+            raise Exception("unknown appid '%s'" % appid)
