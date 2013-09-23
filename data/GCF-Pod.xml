@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE GCF [
+<!ELEMENT GCF (Pod)+>
+<!ELEMENT Pod (Region)+>
+<!ELEMENT Region (Datacenter)+>
+<!ELEMENT Datacenter (Vblock)+>
+<!ELEMENT Vblock (Module)+>
+<!ELEMENT Module EMPTY>
+<!ELEMENT Cluster EMPTY>
+<!ATTLIST Pod Code CDATA #REQUIRED>
+<!ATTLIST Pod Skip CDATA #IMPLIED>
+<!ATTLIST Region Code CDATA #REQUIRED>
+<!ATTLIST Datacenter Code CDATA #REQUIRED>
+<!ATTLIST Vblock Code CDATA #REQUIRED>
+<!ATTLIST Module Code CDATA #REQUIRED>
+<!ATTLIST Module Count CDATA #IMPLIED>
+<!ATTLIST Module Primary CDATA #IMPLIED>
+<!ATTLIST Cluster Code CDATA #REQUIRED>
+]>
+
+<GCF>
+	<Pod Code="POD01">
+		<Region Code="TOKYO">
+			<Datacenter Code="TKY01">
+				<Vblock Code="VB01">
+					<Module Code="REGION_MGMT"/>
+					<Module Code="POD_MGMT"/>
+					<Module Code="DC_MGMT"/>
+					<Module Code="VB_MGMT"/>
+					<Module Code="IAAS_MGMT"/>
+					<Module Code="DAAS_MGMT"/>
+					<Module Code="ESX_AGENT" Count="6"/>
+					<Module Code="VCDB_MIRROR" Primary="VB09"/>
+				</Vblock>
+				<Vblock Code="VB02">
+					<Module Code="VB_MGMT"/>
+					<Module Code="ESX_AGENT" Count="2"/>
+				</Vblock>
+			</Datacenter>
+			<Datacenter Code="TKY02">
+				<Vblock Code="VB07">
+					<Module Code="DC_MGMT"/>
+					<Module Code="VB_MGMT"/>
+					<Module Code="ESX_AGENT" Count="2"/>
+				</Vblock>
+			</Datacenter>
+		</Region>
+		<Region Code="OSAKA">
+			<Datacenter Code="OSK01">
+				<Vblock Code="VB08">
+					<Module Code="REGION_MGMT"/>
+					<Module Code="DC_MGMT"/>
+					<Module Code="VB_MGMT"/>
+					<Module Code="ESX_AGENT" Count="6"/>
+					<Module Code="VCDB_MIRROR" Primary="VB02"/>
+					<Module Code="VCDB_MIRROR" Primary="VB07"/>
+					<Module Code="VCDDB_MIRROR" Primary="IAAS"/>
+					<Module Code="VCDDB_MIRROR" Primary="DAAS"/>
+				</Vblock>
+				<Vblock Code="VB09">
+					<Module Code="VB_MGMT"/>
+					<Module Code="ESX_AGENT" Count="2"/>
+				</Vblock>
+			</Datacenter>
+		</Region>
+	</Pod>
+	<Pod Code="POD3" Skip="true">
+		<Region Code="POC01">
+			<Datacenter Code="CBC01">
+				<Vblock Code="VB10">
+					<Module Code="VB_MGMT"/>
+				</Vblock>
+			</Datacenter>
+		</Region>
+		<Region Code="POC02">
+			<Datacenter Code="CBC01">
+				<Vblock Code="VB11">
+					<Module Code="VB_MGMT"/>
+				</Vblock>
+			</Datacenter>
+		</Region>
+	</Pod>
+</GCF>

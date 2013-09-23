@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE GCF [
+<!ELEMENT GCF (Module)+>
+<!ELEMENT Module (Application)+>
+<!ELEMENT Application (Node)*>
+<!ELEMENT Node EMPTY>
+<!ATTLIST Module Code CDATA #REQUIRED>
+<!ATTLIST Module Description CDATA #REQUIRED>
+<!ATTLIST Application Code CDATA #REQUIRED>
+<!ATTLIST Application Description CDATA #REQUIRED>
+<!ATTLIST Node Code CDATA #REQUIRED>
+]>
+<GCF>
+	<Module Code="POD_MGMT" Description="Management applications deployed for each Pod">
+		<Application Code="HYPRC" Description="Hyperic Server">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="SPRI" Description="Splunk Index Server">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="UM" Description="vCloud Usage Meter">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="VCO" Description="vCenter Orchestrator">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="VCOPS" Description="vCenter Operation Manager">
+			<Node Code="01"/>
+			<Node Code="02"/>
+		</Application>
+	</Module>
+
+	<Module Code="REGION_MGMT" Description="Management applications deployed for each Region">
+		<Application Code="SRM" Description="VMware Site Recovery Manager">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="VSRA" Description="vSphere Replicator Appliance">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="SRM_EDGE" Description="vShield Edge for SRM Test Failover">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="DS" Description="DeepSecurity Manager">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="DSDB" Description="DeepSecurity Manager Database">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="AD_IAAS" Description="Active Directory Domain Controller for IAAS">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+	</Module>
+
+	<Module Code="DC_MGMT" Description="Management applications deployed for each Datacenter">
+		<Application Code="AD" Description="Active Directory Domain Controller">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+		<Application Code="SSO" Description="vCenter SSO Server">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+		<Application Code="ESRS" Description="EMC ESRS Server">
+			<Node Code="01"/> 
+			<Node Code="02"/> 
+			<Node Code="03"/> 
+		</Application>
+	</Module>
+
+	<Module Code="VB_MGMT" Description="Management applications deployed for eahc Vblock">
+		<Application Code="VC" Description="vCenter">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+		<Application Code="VCDB" Description="vCenter Database">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+		<Application Code="VUM" Description="vCenter Update Manager">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+		<Application Code="VSM" Description="vShield Manager">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="SPLF" Description="Splunk Forwarder">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="AM" Description="EMC Array Manager">
+			<Node Code=""/> 
+		</Application>
+	</Module>
+
+	<Module Code="VCDB_MIRROR" Description="vCenter database mirror">
+		<Application Code="VCDB" Description="vCenter database">
+			<Node Code="M"/> 
+			<Node Code="LS"/> 
+		</Application>
+	</Module>
+
+	<Module Code="VCDDB_MIRROR" Description="vCloud Director database mirror">
+		<Application Code="VCDDB" Description="vCloud Director database">
+			<Node Code="M"/> 
+			<Node Code="LS"/> 
+		</Application>
+	</Module>
+
+	<Module Code="ESX_AGENT" Description="ESXi Agent VM">
+		<Application Code="VADP" Description="VADP appliance for Avamar">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="DSVA" Description="DeepSecurity vApp">
+			<Node Code=""/> 
+		</Application>
+	</Module>
+
+	<Module Code="IAAS_MGMT" Description="Management applications for IAAS">
+		<Application Code="VCD" Description="vCloud Director Cell">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+		<Application Code="VCDDB" Description="vCloud Director Database">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+		<Application Code="CB" Description="vCenter Chargeback">
+			<Node Code="01"/> 
+			<Node Code="02"/> 
+			<Node Code="03"/> 
+		</Application>
+		<Application Code="LB" Description="vShield Edge load balancer">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+	</Module>
+
+	<Module Code="DAAS_MGMT" Description="Management applications for DAAS">
+		<Application Code="VCD" Description="vCloud Director Cell">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+		<Application Code="VCDDB" Description="vCloud Director Database">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+		<Application Code="LB" Description="vShield Edge load balancer">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+	</Module>
+</GCF>

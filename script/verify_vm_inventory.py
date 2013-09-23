@@ -1,6 +1,10 @@
 #!/usr/bin/python
 
 import csv
+import xml.etree.ElementTree as et
+
+et.parse('./data/GCF-Servicde.xml')
+
 from pysphere import VIServer
 
 csv = csv.reader(open('./data/GCF-VM.csv'))
