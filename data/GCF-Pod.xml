@@ -57,7 +57,9 @@
 					<Module Code="VCDB_MIRROR" Primary="VB07"/>
 					<Module Code="VCDDB_MIRROR" Primary="IAAS"/>
 					<Module Code="VCDDB_MIRROR" Primary="DAAS"/>
-					<Module Code="VB_MGMT_REPLICA" Primary="VB02"/>
+					<Module Code="VB_MGMT_REPLICA" Primary="VB02" Option="N1KV"/>
+					<Module Code="DC_MGMT_REPLICA" Primary="VB07"/>
+					<Module Code="VB_MGMT_REPLICA" Primary="VB07"/>
 				</Vblock>
 				<Vblock Code="VB09">
 					<Module Code="VB_MGMT"/>

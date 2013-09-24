@@ -70,6 +70,13 @@
 		</Application>
 	</Module>
 
+	<Module Code="DC_MGMT_REPLICA" Description="Replicated datacenter management applications">
+		<Application Code="SSO" Description="vCenter SSO Server">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+	</Module>
+
 	<Module Code="VB_MGMT" Description="Management applications deployed for each Vblock">
 		<Application Code="VC" Description="vCenter">
 			<Node Code="A"/> 

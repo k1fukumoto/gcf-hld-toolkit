@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import xml.etree.ElementTree as et
-import csv
+import csv,re
 
 pods = et.parse('./data/GCF-Pod.xml').getroot()
 modules = et.parse('./data/GCF-Module.xml').getroot()
@@ -19,7 +19,22 @@ def code(e):
     return e.attrib['Code']
 
 def on_appcode(code):
-    print ("%s,%s" % (code,appid_d[code]))
+    if(code in appid_d):
+        print ("%s,%s" % (code,appid_d[code]))
+    else:
+        print 
+        m = re.match("\S+-\S+-\S+-\S+-(\S+)_MGMT_REPLICA_(VB\d{2})-(\S+)",code) 
+        if(not m): raise Exception("ERROR appcode %s not found"  % code)
+        
+        rep = m.group(1)
+        vb = m.group(2)
+        ac = m.group(3)
+        pat = "%s-%s_MGMT-%s" %(vb,rep,ac)
+        for ac in appid_d.keys():
+            if(re.match('.*' + pat,ac)):
+                print ("%s,%s" % (code,appid_d[ac]))
+                return
+        raise Exception("ERROR primary appcode for %s not found" % code)
     
 for pod in pods:
     if('Skip' in pod.attrib): continue
