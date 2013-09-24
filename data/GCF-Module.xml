@@ -31,6 +31,22 @@
 		</Application>
 	</Module>
 
+	<Module Code="POD_MGMT_REPLICA" Description="Replicated Pod management applications">
+		<Application Code="HYPRC" Description="Hyperic Server">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="SPRI" Description="Splunk Index Server">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="VCO" Description="vCenter Orchestrator">
+			<Node Code=""/> 
+		</Application>
+		<Application Code="VCOPS" Description="vCenter Operation Manager">
+			<Node Code="01"/>
+			<Node Code="02"/>
+		</Application>
+	</Module>
+
 	<Module Code="REGION_MGMT" Description="Management applications deployed for each Region">
 		<Application Code="SRM" Description="VMware Site Recovery Manager">
 			<Node Code=""/> 
@@ -106,11 +122,11 @@
 	</Module>
 
 	<Module Code="VB_MGMT_REPLICA" Description="Replicated Vblock management applications">
-		<Application Code="VC" Description="vCenter">
+		<Application Code="VC" Description="vCenter" Optional="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="VUM" Description="vCenter Update Manager">
+		<Application Code="VUM" Description="vCenter Update Manager" Optional="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
@@ -169,6 +185,22 @@
 		</Application>
 	</Module>
 
+	<Module Code="IAAS_MGMT_REPLICA" Description="Replicated IAAS Management applications">
+		<Application Code="VCD" Description="vCloud Director Cell">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+		<Application Code="CB" Description="vCenter Chargeback">
+			<Node Code="01"/> 
+			<Node Code="02"/> 
+			<Node Code="03"/> 
+		</Application>
+		<Application Code="LB" Description="vShield Edge load balancer">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+	</Module>
+
 	<Module Code="DAAS_MGMT" Description="Management applications for DAAS">
 		<Application Code="VCD" Description="vCloud Director Cell">
 			<Node Code="A"/> 
@@ -179,6 +211,13 @@
 			<Node Code="B"/> 
 		</Application>
 		<Application Code="LB" Description="vShield Edge load balancer">
+			<Node Code="A"/> 
+			<Node Code="B"/> 
+		</Application>
+	</Module>
+
+	<Module Code="DAAS_MGMT_REPLICA" Description="Replicated DAAS management applications">
+		<Application Code="VCD" Description="vCloud Director Cell">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>

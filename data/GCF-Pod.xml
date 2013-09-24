@@ -5,8 +5,8 @@
 <!ELEMENT Region (Datacenter)+>
 <!ELEMENT Datacenter (Vblock)+>
 <!ELEMENT Vblock (Module)+>
-<!ELEMENT Module EMPTY>
-<!ELEMENT Cluster EMPTY>
+<!ELEMENT Module (Option)*>
+<!ELEMENT Option EMPTY>
 <!ATTLIST Pod Code CDATA #REQUIRED>
 <!ATTLIST Pod Skip CDATA #IMPLIED>
 <!ATTLIST Region Code CDATA #REQUIRED>
@@ -14,9 +14,8 @@
 <!ATTLIST Vblock Code CDATA #REQUIRED>
 <!ATTLIST Module Code CDATA #REQUIRED>
 <!ATTLIST Module Count CDATA #IMPLIED>
-<!ATTLIST Module Option CDATA #IMPLIED>
 <!ATTLIST Module Primary CDATA #IMPLIED>
-<!ATTLIST Cluster Code CDATA #REQUIRED>
+<!ATTLIST Option Code CDATA #REQUIRED>
 ]>
 
 <GCF>
@@ -31,10 +30,18 @@
 					<Module Code="IAAS_MGMT"/>
 					<Module Code="DAAS_MGMT"/>
 					<Module Code="ESX_AGENT" Count="6"/>
+					<Module Code="VB_MGMT_REPLICA" Primary="VB08"/>
+					<Module Code="DC_MGMT_REPLICA" Primary="VB08"/>
 					<Module Code="VCDB_MIRROR" Primary="VB09"/>
+					<Module Code="VB_MGMT_REPLICA" Primary="VB09">
+ 						<Option Code="VC"/>
+ 						<Option Code="VUM"/>
+					</Module>
 				</Vblock>
 				<Vblock Code="VB02">
-					<Module Code="VB_MGMT" Option="N1KV"/>
+					<Module Code="VB_MGMT">
+						<Option Code="N1KV"/>
+					</Module>
 					<Module Code="ESX_AGENT" Count="2"/>
 				</Vblock>
 			</Datacenter>
@@ -57,9 +64,21 @@
 					<Module Code="VCDB_MIRROR" Primary="VB07"/>
 					<Module Code="VCDDB_MIRROR" Primary="IAAS"/>
 					<Module Code="VCDDB_MIRROR" Primary="DAAS"/>
-					<Module Code="VB_MGMT_REPLICA" Primary="VB02" Option="N1KV"/>
+					<Module Code="POD_MGMT_REPLICA" Primary="VB01"/>
+					<Module Code="VB_MGMT_REPLICA" Primary="VB01"/> 
+					<Module Code="VB_MGMT_REPLICA" Primary="VB02"> 
+ 						<Option Code="N1KV"/>
+ 						<Option Code="VC"/>
+ 						<Option Code="VUM"/>
+					</Module>
+					<Module Code="VB_MGMT_REPLICA" Primary="VB07"> 
+ 						<Option Code="VC"/>
+ 						<Option Code="VUM"/>
+					</Module>
+					<Module Code="DC_MGMT_REPLICA" Primary="VB01"/>
 					<Module Code="DC_MGMT_REPLICA" Primary="VB07"/>
-					<Module Code="VB_MGMT_REPLICA" Primary="VB07"/>
+					<Module Code="IAAS_MGMT_REPLICA" Primary="VB01"/>
+					<Module Code="DAAS_MGMT_REPLICA" Primary="VB01"/>
 				</Vblock>
 				<Vblock Code="VB09">
 					<Module Code="VB_MGMT"/>
