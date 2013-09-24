@@ -27,7 +27,12 @@ for pod in pods:
         for dc in region:
             for vb in dc:
                 for mod in vb.findall('Module'):
+                    opt_app = False
+                    if('Option' in mod.attrib): opt_app = mod.attrib['Option']
                     for app in mod_d[code(mod)]:
+                        if('Optional' in app.attrib):
+                            if(code(app) != opt_app): 
+                                continue
                         for node in app:
                             nodestr = code(node)
                             if (len(nodestr) > 0):

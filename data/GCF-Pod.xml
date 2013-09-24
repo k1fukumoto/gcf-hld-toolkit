@@ -14,6 +14,7 @@
 <!ATTLIST Vblock Code CDATA #REQUIRED>
 <!ATTLIST Module Code CDATA #REQUIRED>
 <!ATTLIST Module Count CDATA #IMPLIED>
+<!ATTLIST Module Option CDATA #IMPLIED>
 <!ATTLIST Module Primary CDATA #IMPLIED>
 <!ATTLIST Cluster Code CDATA #REQUIRED>
 ]>
@@ -33,7 +34,7 @@
 					<Module Code="VCDB_MIRROR" Primary="VB09"/>
 				</Vblock>
 				<Vblock Code="VB02">
-					<Module Code="VB_MGMT"/>
+					<Module Code="VB_MGMT" Option="N1KV"/>
 					<Module Code="ESX_AGENT" Count="2"/>
 				</Vblock>
 			</Datacenter>
@@ -56,6 +57,7 @@
 					<Module Code="VCDB_MIRROR" Primary="VB07"/>
 					<Module Code="VCDDB_MIRROR" Primary="IAAS"/>
 					<Module Code="VCDDB_MIRROR" Primary="DAAS"/>
+					<Module Code="VB_MGMT_REPLICA" Primary="VB02"/>
 				</Vblock>
 				<Vblock Code="VB09">
 					<Module Code="VB_MGMT"/>
@@ -64,7 +66,7 @@
 			</Datacenter>
 		</Region>
 	</Pod>
-	<Pod Code="POD3" Skip="true">
+	<Pod Code="POD03" Skip="true">
 		<Region Code="POC01">
 			<Datacenter Code="CBC01">
 				<Vblock Code="VB10">

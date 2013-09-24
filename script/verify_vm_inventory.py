@@ -1,8 +1,6 @@
 #!/usr/bin/python
 
-import csv
-import re
-import os
+import os, sys, re, csv
 from pysphere import VIServer
 
 def log(l):
@@ -18,7 +16,8 @@ def ERROR(s):
 try: os.remove('./log/verify_vm_inventory.log')
 except: ''
 
-csv = csv.reader(open('./data/GCF-VM.csv'))
+# csv = csv.reader(open('./data/GCF-VM.csv'))
+csv = csv.reader(sys.stdin)
 
 vc = VIServer()
 cur_region = None
@@ -48,11 +47,18 @@ for row in csv:
         ERROR ("VM not found %-16s (%s)" % (appid,vm))
         continue
 
+    
     try:
-        if('POWERED ON' == vmo.get_status()):
-            INFO ("Verified %-16s (%s)" % (appid,vm))
+        if(re.match('.*REPLICA',appid)):
+            if(vmo.is_powered_off()):
+                INFO ("Verified %-16s (%s)" % (appid,vm))
+            else:
+                ERROR ("Replica VM is running %-16s (%s)" % (appid,vm))
         else:
-            ERROR ("VM not running %-16s (%s)" % (appid,vm))
+            if(vmo.is_powered_on()):
+                INFO ("Verified %-16s (%s)" % (appid,vm))
+            else:
+                ERROR ("VM not running %-16s (%s)" % (appid,vm))
     except:
         ERROR("VM query error %-16s (%s)" % (appid,vm))
         continue
