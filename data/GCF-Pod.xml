@@ -34,9 +34,9 @@
 					<Module Code="DC_MGMT_REPLICA" Primary="VB08"/>
 					<Module Code="VB_MGMT_REPLICA" Primary="VB08"/>
 
-					<Module Code="VCDB_MIRROR" Primary="VB09"/>
 					<Module Code="VB_MGMT_REPLICA" Primary="VB09">
  						<Option Code="VC"/>
+ 						<Option Code="VCDB"/>
  						<Option Code="VUM"/>
 					</Module>
 				</Vblock>
@@ -70,23 +70,20 @@
 					<Module Code="VB_MGMT_REPLICA" Primary="VB01"/> 
 					<Module Code="IAAS_MGMT_REPLICA" Primary="VB01"/>
 					<Module Code="DAAS_MGMT_REPLICA" Primary="VB01"/>
-					<Module Code="VCDDB_MIRROR" Primary="IAAS"/>
-					<Module Code="VCDDB_MIRROR" Primary="DAAS"/>
 
 					<Module Code="VB_MGMT_REPLICA" Primary="VB02"> 
  						<Option Code="N1KV"/>
  						<Option Code="VC"/>
+ 						<Option Code="VCDB"/>
  						<Option Code="VUM"/>
 					</Module>
-					<Module Code="VCDB_MIRROR" Primary="VB02"/>
-
 
 					<Module Code="DC_MGMT_REPLICA" Primary="VB07"/>
 					<Module Code="VB_MGMT_REPLICA" Primary="VB07"> 
  						<Option Code="VC"/>
+ 						<Option Code="VCDB"/>
  						<Option Code="VUM"/>
 					</Module>
-					<Module Code="VCDB_MIRROR" Primary="VB07"/>
 				</Vblock>
 				<Vblock Code="VB09">
 					<Module Code="VB_MGMT"/>

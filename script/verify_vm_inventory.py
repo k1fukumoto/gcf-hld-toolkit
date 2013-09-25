@@ -44,22 +44,18 @@ for row in csv:
     try:
         vmo = vc.get_vm_by_name(vm)
     except:
-        ERROR ("VM not found %-16s (%s)" % (appid,vm))
+        ERROR ("VM not found %s (%s)" % (appid,vm))
         continue
 
     
-    try:
-        if(re.match('.*REPLICA',appid)):
-            if(vmo.is_powered_off()):
-                INFO ("Verified %-16s (%s)" % (appid,vm))
-            else:
-                ERROR ("Replica VM is running %-16s (%s)" % (appid,vm))
+    if(re.match('.+REPLICA',appid) and (not re.match('.+-(M|LS)$',appid))):
+        if(vmo.is_powered_off()):
+            INFO ("Verified %s (%s)" % (appid,vm))
         else:
-            if(vmo.is_powered_on()):
-                INFO ("Verified %-16s (%s)" % (appid,vm))
-            else:
-                ERROR ("VM not running %-16s (%s)" % (appid,vm))
-    except:
-        ERROR("VM query error %-16s (%s)" % (appid,vm))
-        continue
+            ERROR ("Replica VM is running %s (%s)" % (appid,vm))
+    else:
+        if(vmo.is_powered_on()):
+            INFO ("Verified %s (%s)" % (appid,vm))
+        else:
+            ERROR ("VM not running %s (%s)" % (appid,vm))
         

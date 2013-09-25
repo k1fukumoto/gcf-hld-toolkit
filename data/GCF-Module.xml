@@ -126,6 +126,10 @@
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
+		<Application Code="VCDB" Description="vCenter database" Optional="true">
+			<Node Code="M"/> 
+			<Node Code="LS"/> 
+		</Application>
 		<Application Code="VUM" Description="vCenter Update Manager" Optional="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
@@ -139,20 +143,6 @@
 		<Application Code="N1KV" Description="Cisco Nexus 1000V Switch" Optional="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
-		</Application>
-	</Module>
-
-	<Module Code="VCDB_MIRROR" Description="vCenter database mirror">
-		<Application Code="VCDB" Description="vCenter database">
-			<Node Code="M"/> 
-			<Node Code="LS"/> 
-		</Application>
-	</Module>
-
-	<Module Code="VCDDB_MIRROR" Description="vCloud Director database mirror">
-		<Application Code="VCDDB" Description="vCloud Director database">
-			<Node Code="M"/> 
-			<Node Code="LS"/> 
 		</Application>
 	</Module>
 
@@ -190,6 +180,10 @@
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
+		<Application Code="VCDDB" Description="vCloud Director database">
+			<Node Code="M"/> 
+			<Node Code="LS"/> 
+		</Application>
 		<Application Code="CB" Description="vCenter Chargeback">
 			<Node Code="01"/> 
 			<Node Code="02"/> 
@@ -220,6 +214,10 @@
 		<Application Code="VCD" Description="vCloud Director Cell">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
+		</Application>
+		<Application Code="VCDDB" Description="vCloud Director database">
+			<Node Code="M"/> 
+			<Node Code="LS"/> 
 		</Application>
 	</Module>
 </GCF>

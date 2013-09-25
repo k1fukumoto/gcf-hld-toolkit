@@ -34,7 +34,7 @@ def on_appcode(code):
             if(re.match('.*' + pat,ac)):
                 print ("%s,%s" % (code,appid_d[ac]))
                 return
-        raise Exception("ERROR primary appcode for %s not found" % code)
+        print ("ERROR primary appcode for %s not found" % code)
     
 for pod in pods:
     if('Skip' in pod.attrib): continue
