@@ -1,20 +1,8 @@
 #!/usr/bin/python
 
-import os, sys, re, csv
+import sys, re, csv
 from pysphere import VIServer
-
-def log(l):
-    print(l)
-    with open('./log/verify_vm_inventory.log','a') as f: f.write(l+"\n")
-    
-def INFO(s):
-    log("INFO: %s" % s)
-
-def ERROR(s):
-    log("ERROR: %s" % s)
-
-try: os.remove('./log/verify_vm_inventory.log')
-except: ''
+from util import logger
 
 # csv = csv.reader(open('./data/GCF-VM.csv'))
 csv = csv.reader(sys.stdin)
@@ -36,7 +24,7 @@ for row in csv:
         else:
             vcip = '10.1.8.50'
     
-        print("INFO: Trying to connect %s" % vcip)
+        logger.info("Trying to connect %s" % vcip)
         vc.connect(vcip,'sbgcf\\svc_report','VMwar3!!')
         cur_region = region
 
@@ -44,18 +32,18 @@ for row in csv:
     try:
         vmo = vc.get_vm_by_name(vm)
     except:
-        ERROR ("VM not found %s (%s)" % (appid,vm))
+        logger.error("VM not found %s (%s)",appid,vm)
         continue
 
     
     if(re.match('.+REPLICA',appid) and (not re.match('.+-(M|LS)$',appid))):
         if(vmo.is_powered_off()):
-            INFO ("Verified %s (%s)" % (appid,vm))
+            logger.info ("Verified %s (%s)",appid,vm)
         else:
-            ERROR ("Replica VM is running %s (%s)" % (appid,vm))
+            logger.error ("Replica VM is running %s (%s)",appid,vm)
     else:
         if(vmo.is_powered_on()):
-            INFO ("Verified %s (%s)" % (appid,vm))
+            logger.info ("Verified %s (%s)",appid,vm)
         else:
-            ERROR ("VM not running %s (%s)" % (appid,vm))
+            logger.error ("VM not running %s (%s)",appid,vm)
         

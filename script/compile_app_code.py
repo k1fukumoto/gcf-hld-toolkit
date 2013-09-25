@@ -2,6 +2,7 @@
 
 import xml.etree.ElementTree as et
 import csv,re
+from util import logger
 
 pods = et.parse('./data/GCF-Pod.xml').getroot()
 modules = et.parse('./data/GCF-Module.xml').getroot()
@@ -34,7 +35,7 @@ def on_appcode(code):
             if(re.match('.*' + pat,ac)):
                 print ("%s,%s" % (code,appid_d[ac]))
                 return
-        print ("ERROR primary appcode for %s not found" % code)
+        logger.error("Primary appcode for %s not found" % code)
     
 for pod in pods:
     if('Skip' in pod.attrib): continue
