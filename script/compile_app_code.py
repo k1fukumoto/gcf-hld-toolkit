@@ -49,7 +49,7 @@ for pod in pods:
 
                     # Iterate through all applications in module
                     for app in mod_d[code(mod)]:
-                        # If application is optional, check if it is in optional app dictionary. Otherwise skip.
+                        # If application is marked as optional, skip unless it is in optional-apps dictionary
                         if('Optional' in app.attrib):
                             if(not code(app) in opt_app): 
                                 continue

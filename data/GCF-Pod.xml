@@ -23,15 +23,17 @@
 		<Region Code="TOKYO">
 			<Datacenter Code="TKY01">
 				<Vblock Code="VB01">
-					<Module Code="REGION_MGMT"/>
 					<Module Code="POD_MGMT"/>
+					<Module Code="REGION_MGMT"/>
 					<Module Code="DC_MGMT"/>
 					<Module Code="VB_MGMT"/>
 					<Module Code="IAAS_MGMT"/>
 					<Module Code="DAAS_MGMT"/>
 					<Module Code="ESX_AGENT" Count="6"/>
-					<Module Code="VB_MGMT_REPLICA" Primary="VB08"/>
+
 					<Module Code="DC_MGMT_REPLICA" Primary="VB08"/>
+					<Module Code="VB_MGMT_REPLICA" Primary="VB08"/>
+
 					<Module Code="VCDB_MIRROR" Primary="VB09"/>
 					<Module Code="VB_MGMT_REPLICA" Primary="VB09">
  						<Option Code="VC"/>
@@ -45,6 +47,7 @@
 					<Module Code="ESX_AGENT" Count="2"/>
 				</Vblock>
 			</Datacenter>
+
 			<Datacenter Code="TKY02">
 				<Vblock Code="VB07">
 					<Module Code="DC_MGMT"/>
@@ -53,6 +56,7 @@
 				</Vblock>
 			</Datacenter>
 		</Region>
+
 		<Region Code="OSAKA">
 			<Datacenter Code="OSK01">
 				<Vblock Code="VB08">
@@ -60,25 +64,29 @@
 					<Module Code="DC_MGMT"/>
 					<Module Code="VB_MGMT"/>
 					<Module Code="ESX_AGENT" Count="6"/>
-					<Module Code="VCDB_MIRROR" Primary="VB02"/>
-					<Module Code="VCDB_MIRROR" Primary="VB07"/>
+
+					<Module Code="POD_MGMT_REPLICA" Primary="VB01"/>
+					<Module Code="DC_MGMT_REPLICA" Primary="VB01"/>
+					<Module Code="VB_MGMT_REPLICA" Primary="VB01"/> 
+					<Module Code="IAAS_MGMT_REPLICA" Primary="VB01"/>
+					<Module Code="DAAS_MGMT_REPLICA" Primary="VB01"/>
 					<Module Code="VCDDB_MIRROR" Primary="IAAS"/>
 					<Module Code="VCDDB_MIRROR" Primary="DAAS"/>
-					<Module Code="POD_MGMT_REPLICA" Primary="VB01"/>
-					<Module Code="VB_MGMT_REPLICA" Primary="VB01"/> 
+
 					<Module Code="VB_MGMT_REPLICA" Primary="VB02"> 
  						<Option Code="N1KV"/>
  						<Option Code="VC"/>
  						<Option Code="VUM"/>
 					</Module>
+					<Module Code="VCDB_MIRROR" Primary="VB02"/>
+
+
+					<Module Code="DC_MGMT_REPLICA" Primary="VB07"/>
 					<Module Code="VB_MGMT_REPLICA" Primary="VB07"> 
  						<Option Code="VC"/>
  						<Option Code="VUM"/>
 					</Module>
-					<Module Code="DC_MGMT_REPLICA" Primary="VB01"/>
-					<Module Code="DC_MGMT_REPLICA" Primary="VB07"/>
-					<Module Code="IAAS_MGMT_REPLICA" Primary="VB01"/>
-					<Module Code="DAAS_MGMT_REPLICA" Primary="VB01"/>
+					<Module Code="VCDB_MIRROR" Primary="VB07"/>
 				</Vblock>
 				<Vblock Code="VB09">
 					<Module Code="VB_MGMT"/>
