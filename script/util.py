@@ -1,6 +1,8 @@
 import logging
+from os import path
+from sys import argv
 
-LOGFILE = './log/verify_vm_inventory.log'
+LOGFILE = "./log/%s.log" % path.splitext(path.split(argv[0])[1])[0]
 
 logger = logging.getLogger('GCF_logger')
 logger.setLevel(logging.DEBUG)
