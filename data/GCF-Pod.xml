@@ -4,7 +4,8 @@
 <!ELEMENT Pod (Region)+>
 <!ELEMENT Region (Datacenter)+>
 <!ELEMENT Datacenter (Vblock)+>
-<!ELEMENT Vblock (Module)+>
+<!ELEMENT Vblock (Cluster)+>
+<!ELEMENT Cluster (Module)+>
 <!ELEMENT Module (Option)*>
 <!ELEMENT Option EMPTY>
 <!ATTLIST Pod Code CDATA #REQUIRED>
@@ -12,6 +13,7 @@
 <!ATTLIST Region Code CDATA #REQUIRED>
 <!ATTLIST Datacenter Code CDATA #REQUIRED>
 <!ATTLIST Vblock Code CDATA #REQUIRED>
+<!ATTLIST Cluster Code CDATA #REQUIRED>
 <!ATTLIST Module Code CDATA #REQUIRED>
 <!ATTLIST Module Count CDATA #IMPLIED>
 <!ATTLIST Module Primary CDATA #IMPLIED>
@@ -23,36 +25,45 @@
 		<Region Code="TOKYO">
 			<Datacenter Code="TKY01">
 				<Vblock Code="VB01">
-					<Module Code="POD_MGMT"/>
-					<Module Code="REGION_MGMT"/>
-					<Module Code="DC_MGMT"/>
-					<Module Code="VB_MGMT"/>
-					<Module Code="IAAS_MGMT"/>
-					<Module Code="DAAS_MGMT"/>
-					<Module Code="ESX_AGENT" Count="6"/>
+					<Cluster Code="AMP01">
+						<Module Code="ESX_AGENT" Count="2"/>
+						<Module Code="VB_MGMT"/>
+					</Cluster>
+					<Cluster Code="MGMT01">
+						<Module Code="ESX_AGENT" Count="4"/>
 
-					<Module Code="DC_MGMT_REPLICA" Primary="VB08"/>
-					<Module Code="VB_MGMT_REPLICA" Primary="VB08"/>
+						<Module Code="POD_MGMT"/>
+						<Module Code="REGION_MGMT"/>
+						<Module Code="DC_MGMT"/>
+						<Module Code="IAAS_MGMT"/>
+						<Module Code="DAAS_MGMT"/>
 
-					<Module Code="VB_MGMT_REPLICA" Primary="VB09">
- 						<Option Code="VC"/>
- 						<Option Code="VCDB"/>
- 						<Option Code="VUM"/>
-					</Module>
+						<Module Code="DC_MGMT_REPLICA" Primary="VB08"/>
+						<Module Code="VB_MGMT_REPLICA" Primary="VB08"/>
+						<Module Code="VB_MGMT_REPLICA" Primary="VB09">
+	 						<Option Code="VC"/>
+	 						<Option Code="VCDB"/>
+	 						<Option Code="VUM"/>
+						</Module>
+					</Cluster>
 				</Vblock>
 				<Vblock Code="VB02">
-					<Module Code="VB_MGMT">
-						<Option Code="N1KV"/>
-					</Module>
-					<Module Code="ESX_AGENT" Count="2"/>
+					<Cluster Code="AMP02">
+						<Module Code="VB_MGMT">
+							<Option Code="N1KV"/>
+						</Module>
+						<Module Code="ESX_AGENT" Count="2"/>
+					</Cluster>
 				</Vblock>
 			</Datacenter>
 
 			<Datacenter Code="TKY02">
 				<Vblock Code="VB07">
-					<Module Code="DC_MGMT"/>
-					<Module Code="VB_MGMT"/>
-					<Module Code="ESX_AGENT" Count="2"/>
+					<Cluster Code="AMP07">
+						<Module Code="DC_MGMT"/>
+						<Module Code="VB_MGMT"/>
+						<Module Code="ESX_AGENT" Count="2"/>
+					</Cluster>
 				</Vblock>
 			</Datacenter>
 		</Region>
@@ -60,34 +71,41 @@
 		<Region Code="OSAKA">
 			<Datacenter Code="OSK01">
 				<Vblock Code="VB08">
-					<Module Code="REGION_MGMT"/>
-					<Module Code="DC_MGMT"/>
-					<Module Code="VB_MGMT"/>
-					<Module Code="ESX_AGENT" Count="6"/>
+					<Cluster Code="AMP08">
+						<Module Code="ESX_AGENT" Count="2"/>
+						<Module Code="VB_MGMT"/>
+					</Cluster>
+					<Cluster Code="MGMT08">
+						<Module Code="REGION_MGMT"/>
+						<Module Code="DC_MGMT"/>
+						<Module Code="ESX_AGENT" Count="4"/>
 
-					<Module Code="POD_MGMT_REPLICA" Primary="VB01"/>
-					<Module Code="DC_MGMT_REPLICA" Primary="VB01"/>
-					<Module Code="VB_MGMT_REPLICA" Primary="VB01"/> 
-					<Module Code="IAAS_MGMT_REPLICA" Primary="VB01"/>
-					<Module Code="DAAS_MGMT_REPLICA" Primary="VB01"/>
+						<Module Code="POD_MGMT_REPLICA" Primary="VB01"/>
+						<Module Code="DC_MGMT_REPLICA" Primary="VB01"/>
+						<Module Code="VB_MGMT_REPLICA" Primary="VB01"/> 
+						<Module Code="IAAS_MGMT_REPLICA" Primary="VB01"/>
+						<Module Code="DAAS_MGMT_REPLICA" Primary="VB01"/>
 
-					<Module Code="VB_MGMT_REPLICA" Primary="VB02"> 
- 						<Option Code="N1KV"/>
- 						<Option Code="VC"/>
- 						<Option Code="VCDB"/>
- 						<Option Code="VUM"/>
-					</Module>
+						<Module Code="VB_MGMT_REPLICA" Primary="VB02"> 
+	 						<Option Code="N1KV"/>
+ 							<Option Code="VC"/>
+ 							<Option Code="VCDB"/>
+ 							<Option Code="VUM"/>
+						</Module>
 
-					<Module Code="DC_MGMT_REPLICA" Primary="VB07"/>
-					<Module Code="VB_MGMT_REPLICA" Primary="VB07"> 
- 						<Option Code="VC"/>
- 						<Option Code="VCDB"/>
- 						<Option Code="VUM"/>
-					</Module>
+						<Module Code="DC_MGMT_REPLICA" Primary="VB07"/>
+						<Module Code="VB_MGMT_REPLICA" Primary="VB07"> 
+	 						<Option Code="VC"/>
+ 							<Option Code="VCDB"/>
+ 							<Option Code="VUM"/>
+						</Module>
+					</Cluster>
 				</Vblock>
 				<Vblock Code="VB09">
-					<Module Code="VB_MGMT"/>
-					<Module Code="ESX_AGENT" Count="2"/>
+					<Cluster Code="AMP09">
+						<Module Code="VB_MGMT"/>
+						<Module Code="ESX_AGENT" Count="2"/>
+					</Cluster>
 				</Vblock>
 			</Datacenter>
 		</Region>
@@ -96,14 +114,18 @@
 		<Region Code="POC01">
 			<Datacenter Code="CBC01">
 				<Vblock Code="VB10">
-					<Module Code="VB_MGMT"/>
+					<Cluster Code="AMP10">
+						<Module Code="VB_MGMT"/>
+					</Cluster>
 				</Vblock>
 			</Datacenter>
 		</Region>
 		<Region Code="POC02">
 			<Datacenter Code="CBC01">
 				<Vblock Code="VB11">
-					<Module Code="VB_MGMT"/>
+					<Cluster Code="AMP10">
+						<Module Code="VB_MGMT"/>
+					</Cluster>
 				</Vblock>
 			</Datacenter>
 		</Region>
