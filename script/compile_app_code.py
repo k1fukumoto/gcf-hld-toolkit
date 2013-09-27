@@ -74,11 +74,11 @@ def on_application(pod,region,dc,vb,clstr,mod,app):
 
     codestr = ("%s-%s-%s-%s-%s-%s-%s" % (code(pod),code(region),code(dc),code(vb),code(clstr),modcode,code(app)))
 
-    if (0 == len(app)):
-        on_appcode(codestr)
-    elif ('Count' in mod.attrib):
+    if ('Count' in mod.attrib):
         for i in range(int(mod.attrib['Count'])):
             on_appcode ("%s-%02d" % (codestr,i+1))
+    elif (0 == len(app)):
+        on_appcode(codestr)
     else:
         for node in app:
             if (0 == len(code(node))): 

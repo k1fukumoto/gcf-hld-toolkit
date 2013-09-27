@@ -24,22 +24,14 @@
 	</Module>
 
 	<Module Code="REGION_MGMT" Description="Management applications deployed for each Region">
-		<Application Code="SRM" Description="VMware Site Recovery Manager">
-			<Node Code=""/> 
-		</Application>
+		<Application Code="SRM" Description="VMware Site Recovery Manager"/>
 		<Application Code="VSRA" Description="vSphere Replicator Appliance">
 			<Node Code="01"/> 
 			<Node Code="02"/> 
 		</Application>
-		<Application Code="SRM_EDGE" Description="vShield Edge for SRM Test Failover">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="DS" Description="DeepSecurity Manager">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="DSDB" Description="DeepSecurity Manager Database">
-			<Node Code=""/> 
-		</Application>
+		<Application Code="SRM_EDGE" Description="vShield Edge for SRM Test Failover"/>
+		<Application Code="DS" Description="DeepSecurity Manager"/>
+		<Application Code="DSDB" Description="DeepSecurity Manager Database"/>
 		<Application Code="AD_IAAS" Description="Active Directory Domain Controller for IAAS">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
@@ -75,15 +67,9 @@
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="VSM" Description="vShield Manager">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="SPLF" Description="Splunk Forwarder">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="AM" Description="EMC Array Manager">
-			<Node Code=""/> 
-		</Application>
+		<Application Code="VSM" Description="vShield Manager"/>
+		<Application Code="SPLF" Description="Splunk Forwarder"/>
+		<Application Code="AM" Description="EMC Array Manager"/>
 		<Application Code="N1KV" Description="Cisco Nexus 1000V Switch" Optional="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
@@ -103,12 +89,8 @@
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="VSM" Description="vShield Manager">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="SPLF" Description="Splunk Forwarder">
-			<Node Code=""/> 
-		</Application>
+		<Application Code="VSM" Description="vShield Manager"/>
+		<Application Code="SPLF" Description="Splunk Forwarder"/>
 		<Application Code="N1KV" Description="Cisco Nexus 1000V Switch" Optional="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
@@ -116,12 +98,8 @@
 	</Module>
 
 	<Module Code="ESX_AGENT" Description="ESXi Agent VM">
-		<Application Code="VADP" Description="VADP appliance for Avamar">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="DSVA" Description="DeepSecurity vApp">
-			<Node Code=""/> 
-		</Application>
+		<Application Code="VADP" Description="VADP appliance for Avamar"/>
+		<Application Code="DSVA" Description="DeepSecurity vApp"/>
 	</Module>
 
 	<Module Code="IAAS_MGMT" Description="Management applications for IAAS">
