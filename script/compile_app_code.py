@@ -20,13 +20,21 @@ def get_replica_apps(m):
     modcode = code(m)
     apps = []
     
+    # Build dictionary for skipped applications
+    skip_apps = {}
+    for opt in mod.findall('Option'):
+        if('Skip' in opt.attrib):
+            skip_apps[code(opt)] = True
+
     if(re.match('.*_REPLICA$',modcode)):
         modcode = modcode.replace('_REPLICA','')
         if(modcode in mod_d):
             for app in mod_d[modcode]:
-                if('Replicated' in app.attrib): 
+                if('Replicated' in app.attrib and (not code(app) in skip_apps)): 
                     apps.append(app)
             return apps
+        else:
+            raise Exception("Unresolved module '%s'" % modcode)
     raise Exception("Unresolved module '%s'" % modcode)
 
 
@@ -71,7 +79,11 @@ def on_application(pod,region,dc,vb,clstr,mod,app):
     modcode = code(mod)
     if('Primary' in mod.attrib):
         modcode = "%s_%s" % (modcode,mod.attrib['Primary'])
+        
+    # Flag whether we're dealing with replica module    
+    is_replica = re.match('.*REPLICA',modcode)
 
+    
     codestr = ("%s-%s-%s-%s-%s-%s-%s" % (code(pod),code(region),code(dc),code(vb),code(clstr),modcode,code(app)))
 
     if ('Count' in mod.attrib):
@@ -83,6 +95,13 @@ def on_application(pod,region,dc,vb,clstr,mod,app):
         for node in app:
             if (0 == len(code(node))): 
                 on_appcode (codestr)
+            elif(is_replica):
+                if(0 < len(node)):
+                    for rep in node:
+                        if(0 < len(code(rep))):
+                            on_appcode ("%s-%s" % (codestr,code(rep)))
+                else:
+                        on_appcode ("%s-%s" % (codestr,code(node)))
             else:
                 on_appcode ("%s-%s" % (codestr,code(node)))
 

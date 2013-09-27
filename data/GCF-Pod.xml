@@ -39,12 +39,12 @@
 						<Module Code="DAAS_MGMT"/>
 
 						<Module Code="DC_MGMT_REPLICA" Primary="VB08"/>
-						<Module Code="VB_MGMT_REPLICA" Primary="VB08"/>
-						<Module Code="VB_MGMT_REPLICA" Primary="VB09">
-	 						<Option Code="VC"/>
-	 						<Option Code="VCDB"/>
-	 						<Option Code="VUM"/>
+						<Module Code="VB_MGMT_REPLICA" Primary="VB08">
+							<Option Code="VC" Skip="true"/>
+							<Option Code="VCDB" Skip="true"/>
+							<Option Code="VUM" Skip="true"/>
 						</Module>
+						<Module Code="VB_MGMT_REPLICA" Primary="VB09"/>
 					</Cluster>
 				</Vblock>
 				<Vblock Code="VB02">
@@ -82,23 +82,20 @@
 
 						<Module Code="POD_MGMT_REPLICA" Primary="VB01"/>
 						<Module Code="DC_MGMT_REPLICA" Primary="VB01"/>
-						<Module Code="VB_MGMT_REPLICA" Primary="VB01"/> 
+						<Module Code="VB_MGMT_REPLICA" Primary="VB01"> 
+							<Option Code="VC" Skip="true"/>
+							<Option Code="VCDB" Skip="true"/>
+							<Option Code="VUM" Skip="true"/>
+						</Module>
 						<Module Code="IAAS_MGMT_REPLICA" Primary="VB01"/>
 						<Module Code="DAAS_MGMT_REPLICA" Primary="VB01"/>
 
 						<Module Code="VB_MGMT_REPLICA" Primary="VB02"> 
 	 						<Option Code="N1KV"/>
- 							<Option Code="VC"/>
- 							<Option Code="VCDB"/>
- 							<Option Code="VUM"/>
 						</Module>
 
 						<Module Code="DC_MGMT_REPLICA" Primary="VB07"/>
-						<Module Code="VB_MGMT_REPLICA" Primary="VB07"> 
-	 						<Option Code="VC"/>
- 							<Option Code="VCDB"/>
- 							<Option Code="VUM"/>
-						</Module>
+						<Module Code="VB_MGMT_REPLICA" Primary="VB07"/> 
 					</Cluster>
 				</Vblock>
 				<Vblock Code="VB09">

@@ -55,27 +55,32 @@
 	</Module>
 
 	<Module Code="VB_MGMT" Description="Management applications deployed for each Vblock">
-		<Application Code="VC" Description="vCenter">
+		<Application Code="VC" Description="vCenter" Replicated="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="VCDB" Description="vCenter Database">
+		<Application Code="VCDB" Description="vCenter Database" Replicated="true">
+			<Node Code="A">
+				<Replica Code="M"/> 
+				<Replica Code="LS"/>
+			</Node> 
+			<Node Code="B">
+				<Replica Code=""/>
+			</Node> 
+		</Application>
+		<Application Code="VUM" Description="vCenter Update Manager" Replicated="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="VUM" Description="vCenter Update Manager">
-			<Node Code="A"/> 
-			<Node Code="B"/> 
-		</Application>
-		<Application Code="VSM" Description="vShield Manager"/>
-		<Application Code="SPLF" Description="Splunk Forwarder"/>
+		<Application Code="VSM" Description="vShield Manager"  Replicated="true"/>
+		<Application Code="SPLF" Description="Splunk Forwarder"  Replicated="true"/>
 		<Application Code="AM" Description="EMC Array Manager"/>
-		<Application Code="N1KV" Description="Cisco Nexus 1000V Switch" Optional="true">
+		<Application Code="N1KV" Description="Cisco Nexus 1000V Switch" Optional="true"  Replicated="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
 	</Module>
-
+<!--
 	<Module Code="VB_MGMT_REPLICA" Description="Replicated Vblock management applications">
 		<Application Code="VC" Description="vCenter" Optional="true">
 			<Node Code="A"/> 
@@ -96,75 +101,54 @@
 			<Node Code="B"/> 
 		</Application>
 	</Module>
-
+-->
 	<Module Code="ESX_AGENT" Description="ESXi Agent VM">
 		<Application Code="VADP" Description="VADP appliance for Avamar"/>
 		<Application Code="DSVA" Description="DeepSecurity vApp"/>
 	</Module>
 
 	<Module Code="IAAS_MGMT" Description="Management applications for IAAS">
-		<Application Code="VCD" Description="vCloud Director Cell">
+		<Application Code="VCD" Description="vCloud Director Cell" Replicated="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="VCDDB" Description="vCloud Director Database">
-			<Node Code="A"/> 
-			<Node Code="B"/> 
+		<Application Code="VCDDB" Description="vCloud Director Database" Replicated="true">
+			<Node Code="A"> 
+				<Replica Code="M"/> 
+				<Replica Code="LS"/>
+			</Node>
+			<Node Code="B">
+				<Replica Code=""/>
+			</Node> 
 		</Application>
-		<Application Code="CB" Description="vCenter Chargeback">
+		<Application Code="CB" Description="vCenter Chargeback" Replicated="true">
 			<Node Code="01"/> 
 			<Node Code="02"/> 
 			<Node Code="03"/> 
 		</Application>
-		<Application Code="LB" Description="vShield Edge load balancer">
-			<Node Code="A"/> 
-			<Node Code="B"/> 
-		</Application>
-	</Module>
-
-	<Module Code="IAAS_MGMT_REPLICA" Description="Replicated IAAS Management applications">
-		<Application Code="VCD" Description="vCloud Director Cell">
-			<Node Code="A"/> 
-			<Node Code="B"/> 
-		</Application>
-		<Application Code="VCDDB" Description="vCloud Director database">
-			<Node Code="M"/> 
-			<Node Code="LS"/> 
-		</Application>
-		<Application Code="CB" Description="vCenter Chargeback">
-			<Node Code="01"/> 
-			<Node Code="02"/> 
-			<Node Code="03"/> 
-		</Application>
-		<Application Code="LB" Description="vShield Edge load balancer">
+		<Application Code="LB" Description="vShield Edge load balancer" Replicated="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
 	</Module>
 
 	<Module Code="DAAS_MGMT" Description="Management applications for DAAS">
-		<Application Code="VCD" Description="vCloud Director Cell">
+		<Application Code="VCD" Description="vCloud Director Cell" Replicated="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="VCDDB" Description="vCloud Director Database">
-			<Node Code="A"/> 
-			<Node Code="B"/> 
+		<Application Code="VCDDB" Description="vCloud Director Database" Replicated="true">
+			<Node Code="A">
+				<Replica Code="M"/> 
+				<Replica Code="LS"/>
+			</Node>	
+			<Node Code="B">
+				<Replica Code=""/>
+			</Node> 
 		</Application>
 		<Application Code="LB" Description="vShield Edge load balancer">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
-		</Application>
-	</Module>
-
-	<Module Code="DAAS_MGMT_REPLICA" Description="Replicated DAAS management applications">
-		<Application Code="VCD" Description="vCloud Director Cell">
-			<Node Code="A"/> 
-			<Node Code="B"/> 
-		</Application>
-		<Application Code="VCDDB" Description="vCloud Director database">
-			<Node Code="M"/> 
-			<Node Code="LS"/> 
 		</Application>
 	</Module>
 </GCF>
