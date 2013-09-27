@@ -13,35 +13,19 @@
 ]>
 <GCF>
 	<Module Code="POD_MGMT" Description="Management applications deployed for each Pod">
-		<Application Code="HYPRC" Description="Hyperic Server">
+		<Application Code="HYPRC" Description="Hyperic Server" Replicated="true">
 			<Node Code=""/> 
 		</Application>
-		<Application Code="SPRI" Description="Splunk Index Server">
+		<Application Code="SPRI" Description="Splunk Index Server" Replicated="true">
 			<Node Code=""/> 
 		</Application>
 		<Application Code="UM" Description="vCloud Usage Meter">
 			<Node Code=""/> 
 		</Application>
-		<Application Code="VCO" Description="vCenter Orchestrator">
+		<Application Code="VCO" Description="vCenter Orchestrator" Replicated="true">
 			<Node Code=""/> 
 		</Application>
-		<Application Code="VCOPS" Description="vCenter Operation Manager">
-			<Node Code="01"/>
-			<Node Code="02"/>
-		</Application>
-	</Module>
-
-	<Module Code="POD_MGMT_REPLICA" Description="Replicated Pod management applications">
-		<Application Code="HYPRC" Description="Hyperic Server">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="SPRI" Description="Splunk Index Server">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="VCO" Description="vCenter Orchestrator">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="VCOPS" Description="vCenter Operation Manager">
+		<Application Code="VCOPS" Description="vCenter Operation Manager" Replicated="true">
 			<Node Code="01"/>
 			<Node Code="02"/>
 		</Application>
@@ -75,7 +59,7 @@
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="SSO" Description="vCenter SSO Server">
+		<Application Code="SSO" Description="vCenter SSO Server" Replicated="true">
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
@@ -83,13 +67,6 @@
 			<Node Code="01"/> 
 			<Node Code="02"/> 
 			<Node Code="03"/> 
-		</Application>
-	</Module>
-
-	<Module Code="DC_MGMT_REPLICA" Description="Replicated datacenter management applications">
-		<Application Code="SSO" Description="vCenter SSO Server">
-			<Node Code="A"/> 
-			<Node Code="B"/> 
 		</Application>
 	</Module>
 

@@ -16,6 +16,36 @@ mod_d = {}
 for mod in modules:
     mod_d[mod.attrib['Code']] = mod 
 
+def get_replica_apps(m):
+    modcode = code(m)
+    apps = []
+    
+    if(re.match('.*_REPLICA$',modcode)):
+        modcode = modcode.replace('_REPLICA','')
+        if(modcode in mod_d):
+            for app in mod_d[modcode]:
+                if('Replicated' in app.attrib): 
+                    apps.append(app)
+            return apps
+    raise Exception("Unresolved module '%s'" % modcode)
+
+
+def get_applications(m):
+    modcode = code(m)
+    apps = mod_d[modcode] if (modcode in mod_d) else get_replica_apps(m)
+
+    # Build dictionary for optional applications
+    opt_apps = {}
+    for opt in mod.findall('Option'):
+        opt_apps[code(opt)] = True
+
+    ret = []
+    for app in apps:    
+        if( (not 'Optional' in app.attrib) or
+            (code(app) in opt_apps) ):
+            ret.append(app)
+    return ret
+
 def code(e):
     return e.attrib['Code']
 
@@ -38,22 +68,12 @@ def on_appcode(code):
     
 def on_module(pod,region,dc,vb,clstr,mod):
     # If "Primary" is specified, append it to module
-    modstr = code(mod)
+    modcode = code(mod)
     if('Primary' in mod.attrib):
-        modstr = "%s_%s" % (modstr,mod.attrib['Primary'])
+        modcode = "%s_%s" % (modcode,mod.attrib['Primary'])
 
-    # Build dictionary for optional applications
-    opt_app = {}
-    for opt in mod.findall('Option'):
-        opt_app[code(opt)] = True
-    
     # Iterate through all applications in module
-    for app in mod_d[code(mod)]:
-        # If application is marked as optional, skip unless it is in optional-apps dictionary
-        if('Optional' in app.attrib):
-            if(not code(app) in opt_app): 
-                continue
-
+    for app in get_applications(mod):
         # Iterate through each node in application
         for node in app:
             nodestr = code(node)
@@ -61,7 +81,7 @@ def on_module(pod,region,dc,vb,clstr,mod):
             if (len(nodestr) > 0):
                 nodestr = "-" + nodestr
 
-            codestr = ("%s-%s-%s-%s-%s-%s-%s%s" % (code(pod),code(region),code(dc),code(vb),code(clstr),modstr,code(app),nodestr))
+            codestr = ("%s-%s-%s-%s-%s-%s-%s%s" % (code(pod),code(region),code(dc),code(vb),code(clstr),modcode,code(app),nodestr))
     
             # If "Count" is specified in module, iterate through it with numeric suffix
             if ('Count' in mod.attrib):
