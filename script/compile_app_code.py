@@ -66,30 +66,26 @@ def on_appcode(code):
                 return
         logger.error("Primary appcode for %s not found" % code)
     
-def on_module(pod,region,dc,vb,clstr,mod):
+def on_application(pod,region,dc,vb,clstr,mod,app):
     # If "Primary" is specified, append it to module
     modcode = code(mod)
     if('Primary' in mod.attrib):
         modcode = "%s_%s" % (modcode,mod.attrib['Primary'])
 
-    # Iterate through all applications in module
-    for app in get_applications(mod):
-        # Iterate through each node in application
-        for node in app:
-            nodestr = code(node)
-            # Add node suffix, only when it is not empty
-            if (len(nodestr) > 0):
-                nodestr = "-" + nodestr
+    codestr = ("%s-%s-%s-%s-%s-%s-%s" % (code(pod),code(region),code(dc),code(vb),code(clstr),modcode,code(app)))
 
-            codestr = ("%s-%s-%s-%s-%s-%s-%s%s" % (code(pod),code(region),code(dc),code(vb),code(clstr),modcode,code(app),nodestr))
-    
-            # If "Count" is specified in module, iterate through it with numeric suffix
-            if ('Count' in mod.attrib):
-                for i in range(int(mod.attrib['Count'])):
-                    on_appcode ("%s-%02d" % (codestr,i+1))
-            else:
+    if (0 == len(app)):
+        on_appcode(codestr)
+    elif ('Count' in mod.attrib):
+        for i in range(int(mod.attrib['Count'])):
+            on_appcode ("%s-%02d" % (codestr,i+1))
+    else:
+        for node in app:
+            if (0 == len(code(node))): 
                 on_appcode (codestr)
-    
+            else:
+                on_appcode ("%s-%s" % (codestr,code(node)))
+
 for pod in pods:
     if('Skip' in pod.attrib): continue
     for region in pod:
@@ -97,5 +93,7 @@ for pod in pods:
             for vb in dc:
                 for clstr in vb:
                     for mod in clstr:
-                        on_module(pod,region,dc,vb,clstr,mod)
+                        for app in get_applications(mod):
+                            on_application(pod,region,dc,vb,clstr,mod,app)
+
                                 

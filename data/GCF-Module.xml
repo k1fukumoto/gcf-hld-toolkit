@@ -13,18 +13,10 @@
 ]>
 <GCF>
 	<Module Code="POD_MGMT" Description="Management applications deployed for each Pod">
-		<Application Code="HYPRC" Description="Hyperic Server" Replicated="true">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="SPRI" Description="Splunk Index Server" Replicated="true">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="UM" Description="vCloud Usage Meter">
-			<Node Code=""/> 
-		</Application>
-		<Application Code="VCO" Description="vCenter Orchestrator" Replicated="true">
-			<Node Code=""/> 
-		</Application>
+		<Application Code="HYPRC" Description="Hyperic Server" Replicated="true"/>
+		<Application Code="SPRI" Description="Splunk Index Server" Replicated="true"/>
+		<Application Code="UM" Description="vCloud Usage Meter"/>
+		<Application Code="VCO" Description="vCenter Orchestrator" Replicated="true"/>
 		<Application Code="VCOPS" Description="vCenter Operation Manager" Replicated="true">
 			<Node Code="01"/>
 			<Node Code="02"/>
