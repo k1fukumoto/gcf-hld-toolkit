@@ -64,9 +64,7 @@
 				<Replica Code="M"/> 
 				<Replica Code="LS"/>
 			</Node> 
-			<Node Code="B">
-				<Replica Code=""/>
-			</Node> 
+			<Node Code="B" Replicated="false"/>
 		</Application>
 		<Application Code="VUM" Description="vCenter Update Manager" Replicated="true">
 			<Node Code="A"/> 
@@ -96,9 +94,7 @@
 				<Replica Code="M"/> 
 				<Replica Code="LS"/>
 			</Node>
-			<Node Code="B">
-				<Replica Code=""/>
-			</Node> 
+			<Node Code="B" Replicated="false"/>
 		</Application>
 		<Application Code="CB" Description="vCenter Chargeback" Replicated="true">
 			<Node Code="01"/> 

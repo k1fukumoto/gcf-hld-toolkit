@@ -100,8 +100,11 @@ def on_application(pod,region,dc,vb,clstr,mod,app):
                     for rep in node:
                         if(0 < len(code(rep))):
                             on_appcode ("%s-%s" % (codestr,code(rep)))
-                else:
+                elif('Replicated' in node.attrib):
+                    if(node.attrib['Replicated'] == "true"):
                         on_appcode ("%s-%s" % (codestr,code(node)))
+                else: 
+                    on_appcode ("%s-%s" % (codestr,code(node)))
             else:
                 on_appcode ("%s-%s" % (codestr,code(node)))
 
