@@ -60,9 +60,9 @@
 			<Datacenter Code="TKY02">
 				<Vblock Code="VB07">
 					<Cluster Code="AMP07">
-						<Module Code="DC_MGMT"/>
-						<Module Code="VB_MGMT"/>
 						<Module Code="ESX_AGENT" Count="2"/>
+						<Module Code="VB_MGMT"/>
+						<Module Code="DC_MGMT"/>
 					</Cluster>
 				</Vblock>
 			</Datacenter>
@@ -76,9 +76,10 @@
 						<Module Code="VB_MGMT"/>
 					</Cluster>
 					<Cluster Code="MGMT08">
+						<Module Code="ESX_AGENT" Count="4"/>
+
 						<Module Code="REGION_MGMT"/>
 						<Module Code="DC_MGMT"/>
-						<Module Code="ESX_AGENT" Count="4"/>
 
 						<Module Code="POD_MGMT_REPLICA" Primary="VB01"/>
 						<Module Code="DC_MGMT_REPLICA" Primary="VB01"/>
@@ -100,8 +101,8 @@
 				</Vblock>
 				<Vblock Code="VB09">
 					<Cluster Code="AMP09">
-						<Module Code="VB_MGMT"/>
 						<Module Code="ESX_AGENT" Count="2"/>
+						<Module Code="VB_MGMT"/>
 					</Cluster>
 				</Vblock>
 			</Datacenter>

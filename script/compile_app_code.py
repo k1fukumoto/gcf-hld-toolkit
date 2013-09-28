@@ -80,7 +80,7 @@ def on_application(pod,region,dc,vb,clstr,mod,app):
     if('Primary' in mod.attrib):
         modcode = "%s_%s" % (modcode,mod.attrib['Primary'])
         
-    # Flag whether we're dealing with replica module    
+    # Flag if compiling replica module    
     is_replica = re.match('.*REPLICA',modcode)
 
     
