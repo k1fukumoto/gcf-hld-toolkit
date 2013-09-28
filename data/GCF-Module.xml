@@ -80,28 +80,7 @@
 			<Node Code="B"/> 
 		</Application>
 	</Module>
-<!--
-	<Module Code="VB_MGMT_REPLICA" Description="Replicated Vblock management applications">
-		<Application Code="VC" Description="vCenter" Optional="true">
-			<Node Code="A"/> 
-			<Node Code="B"/> 
-		</Application>
-		<Application Code="VCDB" Description="vCenter database" Optional="true">
-			<Node Code="M"/> 
-			<Node Code="LS"/> 
-		</Application>
-		<Application Code="VUM" Description="vCenter Update Manager" Optional="true">
-			<Node Code="A"/> 
-			<Node Code="B"/> 
-		</Application>
-		<Application Code="VSM" Description="vShield Manager"/>
-		<Application Code="SPLF" Description="Splunk Forwarder"/>
-		<Application Code="N1KV" Description="Cisco Nexus 1000V Switch" Optional="true">
-			<Node Code="A"/> 
-			<Node Code="B"/> 
-		</Application>
-	</Module>
--->
+
 	<Module Code="ESX_AGENT" Description="ESXi Agent VM">
 		<Application Code="VADP" Description="VADP appliance for Avamar"/>
 		<Application Code="DSVA" Description="DeepSecurity vApp"/>
