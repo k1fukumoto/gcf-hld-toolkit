@@ -15,4 +15,10 @@ ch.setFormatter(formatter)
 logger.addHandler(fh)
 logger.addHandler(ch)
 
+class ErrorCode(object):
+    E_MISSING_VM = "MISSING_VM"
+    E_MISSING_REPLICA = "MISSING_REPLICA"
+    E_WRONG_CLUSTER = "WRONG_CLUSTER"
+
+    
 
