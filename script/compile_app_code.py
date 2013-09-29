@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
 import xml.etree.ElementTree as et
-import csv,re
-from util import logger
+import csv
 
 pods = et.parse('./data/GCF-Pod.xml').getroot()
 modules = et.parse('./data/GCF-Module.xml').getroot()
@@ -65,7 +64,12 @@ def on_application(pod,region,dc,vb,clstr,mod,app):
     if(is_replica):
         modcode = "%s_REPLICA_%s" % (modcode,mod.attrib['Replica'])
         
-    codestr = ("%s-%s-%s-%s-%s-%s-%s" % (code(pod),code(region),code(dc),code(vb),code(clstr),modcode,code(app)))
+    # Change cluster, if explicity specifiec
+    clstrcode = code(clstr)
+    if('Cluster' in app.attrib):
+        clstrcode = app.attrib['Cluster']   
+        
+    codestr = ("%s-%s-%s-%s-%s-%s-%s" % (code(pod),code(region),code(dc),code(vb),clstrcode,modcode,code(app)))
 
     if ('Count' in mod.attrib):
         for i in range(int(mod.attrib['Count'])):
