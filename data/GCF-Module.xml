@@ -47,7 +47,7 @@
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="ESRS" Description="EMC ESRS Server">
+		<Application Code="ESRS" Description="EMC ESRS Server" Cluster="AMP">
 			<Node Code="01"/> 
 			<Node Code="02"/> 
 			<Node Code="03"/> 
