@@ -70,7 +70,7 @@
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="SPLF" Description="Splunk Forwarder"  Replicated="true" Cluster="MGMT"/>
+		<Application Code="SPLF" Description="Splunk Forwarder"  Replicated="true"/>
 		<Application Code="AM" Description="EMC Array Manager"/>
 		<Application Code="N1KV" Description="Cisco Nexus 1000V Switch" Optional="true"  Replicated="true">
 			<Node Code="A"/> 
@@ -79,7 +79,7 @@
 	</Module>
 
 	<Module Code="VB_MGMT_VSM" Description="vShield Manager for AMP vCenter">
-		<Application Code="VSM" Description="vShield Manager"  Replicated="true" Cluster="MGMT"/>
+		<Application Code="VSM" Description="vShield Manager"  Replicated="true"/>
 	</Module>
 
 	<Module Code="ESX_AGENT" Description="ESXi Agent VM">
