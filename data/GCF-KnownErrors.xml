@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GCF>
+	<KnownErrors>
+		<Error
+			ErrorCode="WRONG_CLUSTER"
+			AppCode="POD01-TOKYO-TKY01-VB01-AMP-VB_MGMT-SPLF"
+			Description="Splunk indexer is not installed on AMP for Vblock1"
+		/>
+		<Error
+			ErrorCode="WRONG_CLUSTER"
+			AppCode="POD01-TOKYO-TKY01-VB01-AMP-VB_MGMT-VC-B"
+			Description="Heartbeat pair for VB1 AMP vCenter should be moved to AMP"
+	    />
+		<Error
+			ErrorCode="WRONG_CLUSTER"
+			AppCode="POD01-TOKYO-TKY01-VB01-AMP-VB_MGMT-VCDB-B"
+			Description="Heartbeat pair for VB1 AMP vCenter database should be moved to AMP"
+		/>
+	</KnownErrors>
+</GCF>
