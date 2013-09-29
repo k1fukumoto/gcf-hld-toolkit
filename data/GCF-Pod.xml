@@ -9,7 +9,7 @@
 <!ELEMENT Module (Option)*>
 <!ELEMENT Option EMPTY>
 <!ATTLIST Pod Code CDATA #REQUIRED>
-<!ATTLIST Pod Skip CDATA #IMPLIED>
+<!ATTLIST Pod Exclude CDATA #IMPLIED>
 <!ATTLIST Region Code CDATA #REQUIRED>
 <!ATTLIST Datacenter Code CDATA #REQUIRED>
 <!ATTLIST Vblock Code CDATA #REQUIRED>
@@ -38,13 +38,13 @@
 						<Module Code="IAAS_MGMT"/>
 						<Module Code="DAAS_MGMT"/>
 
-						<Module Code="DC_MGMT_REPLICA" Primary="VB08"/>
-						<Module Code="VB_MGMT_REPLICA" Primary="VB08">
-							<Option Code="VC" Skip="true"/>
-							<Option Code="VCDB" Skip="true"/>
-							<Option Code="VUM" Skip="true"/>
+						<Module Code="DC_MGMT" Replica="VB08"/>
+						<Module Code="VB_MGMT" Replica="VB08">
+							<Option Code="VC" Exclude="true"/>
+							<Option Code="VCDB" Exclude="true"/>
+							<Option Code="VUM" Exclude="true"/>
 						</Module>
-						<Module Code="VB_MGMT_REPLICA" Primary="VB09"/>
+						<Module Code="VB_MGMT" Replica="VB09"/>
 					</Cluster>
 				</Vblock>
 				<Vblock Code="VB02">
@@ -81,22 +81,22 @@
 						<Module Code="REGION_MGMT"/>
 						<Module Code="DC_MGMT"/>
 
-						<Module Code="POD_MGMT_REPLICA" Primary="VB01"/>
-						<Module Code="DC_MGMT_REPLICA" Primary="VB01"/>
-						<Module Code="VB_MGMT_REPLICA" Primary="VB01"> 
-							<Option Code="VC" Skip="true"/>
-							<Option Code="VCDB" Skip="true"/>
-							<Option Code="VUM" Skip="true"/>
+						<Module Code="POD_MGMT" Replica="VB01"/>
+						<Module Code="DC_MGMT" Replica="VB01"/>
+						<Module Code="VB_MGMT" Replica="VB01"> 
+							<Option Code="VC" Exclude="true"/>
+							<Option Code="VCDB" Exclude="true"/>
+							<Option Code="VUM" Exclude="true"/>
 						</Module>
-						<Module Code="IAAS_MGMT_REPLICA" Primary="VB01"/>
-						<Module Code="DAAS_MGMT_REPLICA" Primary="VB01"/>
+						<Module Code="IAAS_MGMT" Replica="VB01"/>
+						<Module Code="DAAS_MGMT" Replica="VB01"/>
 
-						<Module Code="VB_MGMT_REPLICA" Primary="VB02"> 
+						<Module Code="VB_MGMT" Replica="VB02"> 
 	 						<Option Code="N1KV"/>
 						</Module>
 
-						<Module Code="DC_MGMT_REPLICA" Primary="VB07"/>
-						<Module Code="VB_MGMT_REPLICA" Primary="VB07"/> 
+						<Module Code="DC_MGMT" Replica="VB07"/>
+						<Module Code="VB_MGMT" Replica="VB07"/> 
 					</Cluster>
 				</Vblock>
 				<Vblock Code="VB09">
@@ -108,7 +108,7 @@
 			</Datacenter>
 		</Region>
 	</Pod>
-	<Pod Code="POD03" Skip="true">
+	<Pod Code="POD03" Exclude="true">
 		<Region Code="POC01">
 			<Datacenter Code="CBC01">
 				<Vblock Code="VB10">

@@ -16,42 +16,36 @@ mod_d = {}
 for mod in modules:
     mod_d[mod.attrib['Code']] = mod 
 
-def get_replica_apps(m):
-    modcode = code(m)
-    apps = []
+
+def get_applications(mod):
+    modcode = code(mod)
+
+    if(not modcode in mod_d):
+        raise Exception("Unresolved module code '%s'" % modcode)
     
-    # Build dictionary for skipped applications
-    skip_apps = {}
-    for opt in mod.findall('Option'):
-        if('Skip' in opt.attrib):
-            skip_apps[code(opt)] = True
-
-    if(re.match('.*_REPLICA$',modcode)):
-        modcode = modcode.replace('_REPLICA','')
-        if(modcode in mod_d):
-            for app in mod_d[modcode]:
-                if('Replicated' in app.attrib and (not code(app) in skip_apps)): 
-                    apps.append(app)
-            return apps
-        else:
-            raise Exception("Unresolved module '%s'" % modcode)
-    raise Exception("Unresolved module '%s'" % modcode)
-
-
-def get_applications(m):
-    modcode = code(m)
-    apps = mod_d[modcode] if (modcode in mod_d) else get_replica_apps(m)
+    is_replica = ('Replica' in mod.attrib)
 
     # Build dictionary for optional applications
-    opt_apps = {}
+    include_apps = {}
+    exclude_apps = {}
     for opt in mod.findall('Option'):
-        opt_apps[code(opt)] = True
+        if('Exclude' in opt.attrib):
+            exclude_apps[code(opt)] = True
+        else:
+            include_apps[code(opt)] = True
 
     ret = []
-    for app in apps:    
-        if( (not 'Optional' in app.attrib) or
-            (code(app) in opt_apps) ):
-            ret.append(app)
+    for app in mod_d[modcode]:
+        if(is_replica and
+           not 'Replicated' in app.attrib): 
+            continue
+        if(code(app) in exclude_apps):
+            continue
+        if( 'Optional' in app.attrib and
+            not (code(app) in include_apps) ):
+            continue
+        ret.append(app)
+
     return ret
 
 def code(e):
@@ -61,29 +55,16 @@ def on_appcode(code):
     if(code in appid_d):
         print ("%s,%s" % (code,appid_d[code]))
     else:
-        m = re.match("\S+-\S+-\S+-\S+-(\S+)_MGMT_REPLICA_(VB\d{2})-(\S+)$",code) 
-        if(not m): raise Exception("ERROR appcode %s not found"  % code)
-        
-        rep = m.group(1)
-        vb = m.group(2)
-        ac = m.group(3)
-        pat = "%s-%s_MGMT-%s$" %(vb,rep,ac)
-        for ac in appid_d.keys():
-            if(re.match('.*' + pat,ac)):
-                print ("%s,%s" % (code,appid_d[ac]))
-                return
-        logger.error("Primary appcode for %s not found" % code)
+        raise Exception("ERROR appcode %s not found"  % code)
     
 def on_application(pod,region,dc,vb,clstr,mod,app):
-    # If "Primary" is specified, append it to module
-    modcode = code(mod)
-    if('Primary' in mod.attrib):
-        modcode = "%s_%s" % (modcode,mod.attrib['Primary'])
-        
-    # Flag if compiling replica module    
-    is_replica = re.match('.*REPLICA',modcode)
+    is_replica = ('Replica' in mod.attrib)
 
-    
+    # Add suffix for replica modeuls
+    modcode = code(mod)
+    if(is_replica):
+        modcode = "%s_REPLICA_%s" % (modcode,mod.attrib['Replica'])
+        
     codestr = ("%s-%s-%s-%s-%s-%s-%s" % (code(pod),code(region),code(dc),code(vb),code(clstr),modcode,code(app)))
 
     if ('Count' in mod.attrib):
@@ -109,7 +90,7 @@ def on_application(pod,region,dc,vb,clstr,mod,app):
                 on_appcode ("%s-%s" % (codestr,code(node)))
 
 for pod in pods:
-    if('Skip' in pod.attrib): continue
+    if('Exclude' in pod.attrib): continue
     for region in pod:
         for dc in region:
             for vb in dc:
