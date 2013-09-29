@@ -64,7 +64,11 @@ def on_application(pod,region,dc,vb,clstr,mod,app):
     if(is_replica):
         modcode = "%s_REPLICA_%s" % (modcode,mod.attrib['Replica'])
         
-    # Change cluster, if explicity specifiec
+    # Add suffix when Vblock attribute is given. i.e., VSM
+    if('Vblock' in mod.attrib):
+        modcode = "%s_%s" % (modcode,mod.attrib['Vblock'])
+        
+     # Change cluster, if explicity specifiec
     clstrcode = code(clstr)
     if('Cluster' in app.attrib):
         clstrcode = app.attrib['Cluster']   
