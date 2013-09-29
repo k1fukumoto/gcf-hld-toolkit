@@ -25,11 +25,11 @@
 		<Region Code="TOKYO">
 			<Datacenter Code="TKY01">
 				<Vblock Code="VB01">
-					<Cluster Code="AMP01">
+					<Cluster Code="AMP">
 						<Module Code="ESX_AGENT" Count="2"/>
 						<Module Code="VB_MGMT"/>
 					</Cluster>
-					<Cluster Code="MGMT01">
+					<Cluster Code="MGMT">
 						<Module Code="ESX_AGENT" Count="4"/>
 
 						<Module Code="POD_MGMT"/>
@@ -48,7 +48,7 @@
 					</Cluster>
 				</Vblock>
 				<Vblock Code="VB02">
-					<Cluster Code="AMP02">
+					<Cluster Code="AMP">
 						<Module Code="VB_MGMT">
 							<Option Code="N1KV"/>
 						</Module>
@@ -59,7 +59,7 @@
 
 			<Datacenter Code="TKY02">
 				<Vblock Code="VB07">
-					<Cluster Code="AMP07">
+					<Cluster Code="AMP">
 						<Module Code="ESX_AGENT" Count="2"/>
 						<Module Code="VB_MGMT"/>
 						<Module Code="DC_MGMT"/>
@@ -71,11 +71,11 @@
 		<Region Code="OSAKA">
 			<Datacenter Code="OSK01">
 				<Vblock Code="VB08">
-					<Cluster Code="AMP08">
+					<Cluster Code="AMP">
 						<Module Code="ESX_AGENT" Count="2"/>
 						<Module Code="VB_MGMT"/>
 					</Cluster>
-					<Cluster Code="MGMT08">
+					<Cluster Code="MGMT">
 						<Module Code="ESX_AGENT" Count="4"/>
 
 						<Module Code="REGION_MGMT"/>
@@ -100,7 +100,7 @@
 					</Cluster>
 				</Vblock>
 				<Vblock Code="VB09">
-					<Cluster Code="AMP09">
+					<Cluster Code="AMP">
 						<Module Code="ESX_AGENT" Count="2"/>
 						<Module Code="VB_MGMT"/>
 					</Cluster>
@@ -112,7 +112,7 @@
 		<Region Code="POC01">
 			<Datacenter Code="CBC01">
 				<Vblock Code="VB10">
-					<Cluster Code="AMP10">
+					<Cluster Code="AMP">
 						<Module Code="VB_MGMT"/>
 					</Cluster>
 				</Vblock>
@@ -121,7 +121,7 @@
 		<Region Code="POC02">
 			<Datacenter Code="CBC01">
 				<Vblock Code="VB11">
-					<Cluster Code="AMP10">
+					<Cluster Code="AMP">
 						<Module Code="VB_MGMT"/>
 					</Cluster>
 				</Vblock>
