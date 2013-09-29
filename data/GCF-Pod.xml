@@ -31,6 +31,10 @@
 					</Cluster>
 					<Cluster Code="MGMT">
 						<Module Code="ESX_AGENT" Count="4"/>
+						<Module Code="VB_MGMT_VSM" Vblock="VB01"/>
+						<Module Code="VB_MGMT_VSM" Vblock="VB02"/>
+						<Module Code="VB_MGMT_VSM" Vblock="VB07"/>
+						<Module Code="VB_MGMT_VSM" Vblock="VB09"/>
 
 						<Module Code="POD_MGMT"/>
 						<Module Code="REGION_MGMT"/>
@@ -44,7 +48,10 @@
 							<Option Code="VCDB" Exclude="true"/>
 							<Option Code="VUM" Exclude="true"/>
 						</Module>
+						<Module Code="VB_MGMT_VSM" Replica="VB08"/>
+
 						<Module Code="VB_MGMT" Replica="VB09"/>
+						<Module Code="VB_MGMT_VSM" Replica="VB09"/>
 					</Cluster>
 				</Vblock>
 				<Vblock Code="VB02">
@@ -77,6 +84,7 @@
 					</Cluster>
 					<Cluster Code="MGMT">
 						<Module Code="ESX_AGENT" Count="4"/>
+						<Module Code="VB_MGMT_VSM" Vblock="VB08"/>
 
 						<Module Code="REGION_MGMT"/>
 						<Module Code="DC_MGMT"/>
@@ -88,15 +96,18 @@
 							<Option Code="VCDB" Exclude="true"/>
 							<Option Code="VUM" Exclude="true"/>
 						</Module>
+						<Module Code="VB_MGMT_VSM" Replica="VB01"/> 
 						<Module Code="IAAS_MGMT" Replica="VB01"/>
 						<Module Code="DAAS_MGMT" Replica="VB01"/>
 
 						<Module Code="VB_MGMT" Replica="VB02"> 
 	 						<Option Code="N1KV"/>
 						</Module>
+						<Module Code="VB_MGMT_VSM" Replica="VB02"/> 
 
 						<Module Code="DC_MGMT" Replica="VB07"/>
 						<Module Code="VB_MGMT" Replica="VB07"/> 
+						<Module Code="VB_MGMT_VSM" Replica="VB07"/> 
 					</Cluster>
 				</Vblock>
 				<Vblock Code="VB09">
