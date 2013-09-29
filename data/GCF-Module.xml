@@ -24,7 +24,7 @@
 	</Module>
 
 	<Module Code="REGION_MGMT" Description="Management applications deployed for each Region">
-		<Application Code="SRM" Description="VMware Site Recovery Manager"/>
+		<Application Code="SRM" Description="VMware Site Recovery Manager" Cluster="AMP"/>
 		<Application Code="VSRA" Description="vSphere Replicator Appliance">
 			<Node Code="01"/> 
 			<Node Code="02"/> 
@@ -70,7 +70,7 @@
 			<Node Code="A"/> 
 			<Node Code="B"/> 
 		</Application>
-		<Application Code="VSM" Description="vShield Manager"  Replicated="true"/>
+		<Application Code="VSM" Description="vShield Manager"  Replicated="true" Cluster="MGMT"/>
 		<Application Code="SPLF" Description="Splunk Forwarder"  Replicated="true"/>
 		<Application Code="AM" Description="EMC Array Manager"/>
 		<Application Code="N1KV" Description="Cisco Nexus 1000V Switch" Optional="true"  Replicated="true">
