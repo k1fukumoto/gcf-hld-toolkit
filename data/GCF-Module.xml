@@ -3,13 +3,18 @@
 <!ELEMENT GCF (Module)+>
 <!ELEMENT Module (Application)+>
 <!ELEMENT Application (Node)*>
-<!ELEMENT Node EMPTY>
+<!ELEMENT Node (Replica)*>
+<!ELEMENT Replica EMPTY>
 <!ATTLIST Module Code CDATA #REQUIRED>
 <!ATTLIST Module Description CDATA #REQUIRED>
 <!ATTLIST Application Code CDATA #REQUIRED>
 <!ATTLIST Application Description CDATA #REQUIRED>
 <!ATTLIST Application Optional CDATA #IMPLIED>
+<!ATTLIST Application Replicated CDATA #IMPLIED>
+<!ATTLIST Application Cluster CDATA #IMPLIED>
 <!ATTLIST Node Code CDATA #REQUIRED>
+<!ATTLIST Node Replicated CDATA #IMPLIED>
+<!ATTLIST Replica Code CDATA #REQUIRED>
 ]>
 <GCF>
 	<Module Code="POD_MGMT" Description="Management applications deployed for each Pod">
