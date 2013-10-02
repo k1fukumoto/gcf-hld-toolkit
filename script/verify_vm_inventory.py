@@ -13,8 +13,8 @@ def ERROR(code,appcode,s):
     for ke in known_errors.iter('Error'):
         if(ke.attrib['ErrorCode'] == code and
            ke.attrib['AppCode'] == appcode):
-            logger.info(l)
-            logger.info("  >> %s",ke.attrib['Description'])
+            logger.warning(l)
+            logger.warning("  >> %s",ke.attrib['Description'])
             return
     logger.error(l)
 
@@ -54,6 +54,8 @@ for row in csv:
         cur_region = region
 
         try:
+            host_d = {}
+            vm_d = {}
             for c_mor, c_name in vc.get_clusters().items():
                 if(not c_name in clstrname_d): continue
                 logger.debug("Fetching cluster '%s'",c_name)
@@ -79,22 +81,22 @@ for row in csv:
 
     if(clstrid_d[clstrid] != host_d[vm_d[vm]]):
         ERROR(ErrorCode.E_WRONG_CLUSTER,appid,"| Actual %s" % clstrname_d[host_d[vm_d[vm]]])
-        continue 
     
     vmo = None
     try:
         vmo = vc.get_vm_by_name(vm)
+        osstr = vmo.get_property('guest_full_name')
     except:
         raise Exception("Failed to get VM object %s (%s)",appid,vm)
 
     if(is_replica and (not re.match('.+-(M|LS)$',appid))):
         if(vmo.is_powered_off()):
-            logger.info ("VERIFIED %s (%s)",appid,vm)
+            logger.info ("VERIFIED %s (%s/%s)",appid,vm,osstr)
         else:
             logger.error ("Replica VM is running %s (%s)",appid,vm)
     else:
         if(vmo.is_powered_on()):
-            logger.info ("VERIFIED %s (%s)",appid,vm)
+            logger.info ("VERIFIED %s (%s/%s)",appid,vm,osstr)
         else:
             logger.error ("VM not running %s (%s)",appid,vm)
         
